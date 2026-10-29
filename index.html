@@ -11,7 +11,10 @@
     <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" />
     <meta property="og:url" content="https://anhtuan5d.github.io/CJ-save-the-date/" />
     
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     
     <style>
@@ -24,7 +27,7 @@
             padding: 0;
         }
 
-        /* Eleganter Übergang von Burgund zu Eierschale */
+        /* Eleganter echter CSS-Verlauf von Burgund zu Eierschale */
         .hero-section {
             background: linear-gradient(to bottom, #542127 0%, #542127 80%, #FAF7F2 100%);
             color: #FAF7F2;
@@ -49,42 +52,58 @@
             transform: rotate(-3deg);
             transition: transform 0.3s ease;
         }
-        .polaroid:hover {
-            transform: rotate(0deg) scale(1.02);
+        .polaroid.right-rotate {
+            transform: rotate(3deg);
         }
 
-        /* Subtile, mitlaufende Katzenpfoten im rechten Bereich */
+        /* Katzenpfoten Spur im Hintergrund (z-index 5: hinter Fotos, über Background) */
         .paws-track {
             position: absolute;
-            right: 5%;
-            top: 20vh;
-            bottom: 10vh;
-            width: 40px;
+            right: 8%;
+            top: 100px;
+            bottom: 50px;
+            width: 30px;
             pointer-events: none;
-            z-index: 10;
-            opacity: 0.4;
+            z-index: 5;
         }
         .paw-icon {
             position: absolute;
-            width: 28px;
-            height: 28px;
-            color: #d97706; /* Warmes Orange/Amber */
-            transform: rotate(180deg); /* Zeigt nach unten */
+            width: 24px;
+            height: 24px;
+            color: #d97706; /* Warmes Orange */
+            opacity: 0.65;
+            transform: rotate(180deg); /* Zeigt nach unten in Scrollrichtung */
+        }
+
+        /* Sanftes Hereingleiten der Side-Fotos */
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-60px) rotate(-6deg);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .slide-right {
+            opacity: 0;
+            transform: translateX(60px) rotate(6deg);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .slide-left.active, .slide-right.active {
+            opacity: 1;
+            transform: translateX(0) rotate(var(--rot, 0deg));
         }
     </style>
 </head>
 <body class="relative">
 
     <!-- Header Navigation -->
-    <header class="absolute top-0 w-full p-6 flex justify-between items-center z-50">
-        <div class="text-2xl font-semibold text-[#FAF7F2] tracking-widest">C & J</div>
+    <header class="fixed top-0 w-full p-6 flex justify-between items-center z-50">
+        <div class="text-2xl font-semibold text-[#FAF7F2] mix-blend-difference tracking-widest">C & J</div>
         <button onclick="alert('Hier öffnet sich der Editor für Daten & Fotos.')" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-5 py-2.5 rounded-full border border-white/20 transition text-sm flex items-center gap-2 shadow-lg">
             <span>⚙️</span> Daten anpassen
         </button>
     </header>
 
     <!-- 1. HERO SEKTION (Burgunderrot) -->
-    <section class="hero-section flex flex-col items-center pt-36 pb-32 px-4 text-center relative">
+    <section class="hero-section flex flex-col items-center pt-36 pb-32 px-4 text-center relative z-10">
         <h2 class="text-sm tracking-[0.3em] uppercase mb-6 opacity-80">Ein neues Kapitel. Mit euch.</h2>
         <h1 class="text-6xl md:text-8xl font-semibold mb-6 tracking-wide">Save the Date</h1>
         <p class="text-3xl italic mb-6">Celine & Justin</p>
@@ -93,29 +112,30 @@
     </section>
 
     <!-- 2. HAUPTSEKTION: Filmstreifen & Story (Übergang zu Eierschalenweiß) -->
-    <section class="relative max-w-4xl mx-auto px-4 py-20">
+    <section class="relative max-w-5xl mx-auto px-4 py-24 z-20">
         
         <!-- Mitlaufende Katzenpfoten Spur auf der rechten Seite -->
         <div class="paws-track hidden md:block">
             <div class="paw-icon" style="top: 5%; right: 0px;">🐾</div>
-            <div class="paw-icon" style="top: 25%; right: 25px;">🐾</div>
-            <div class="paw-icon" style="top: 45%; right: 5px;">🐾</div>
-            <div class="paw-icon" style="top: 65%; right: 30px;">🐾</div>
-            <div class="paw-icon" style="top: 85%; right: 10px;">🐾</div>
+            <div class="paw-icon" style="top: 20%; right: 20px;">🐾</div>
+            <div class="paw-icon" style="top: 35%; right: 5px;">🐾</div>
+            <div class="paw-icon" style="top: 50%; right: 25px;">🐾</div>
+            <div class="paw-icon" style="top: 65%; right: 10px;">🐾</div>
+            <div class="paw-icon" style="top: 80%; right: 20px;">🐾</div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center relative z-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center relative">
             
-            <!-- Linkes Foto / Statement -->
-            <div class="flex justify-center md:justify-end">
-                <div class="polaroid w-64">
+            <!-- Linkes Foto (Gleitet ein) -->
+            <div class="flex justify-center md:justify-end z-30">
+                <div class="polaroid w-64 slide-left" style="--rot: -3deg;">
                     <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" class="w-full h-48 object-cover" alt="Zusammen losgehen">
                     <p class="text-xs text-center mt-3 text-gray-500 uppercase tracking-wider">01 — Zusammen losgehen</p>
                 </div>
             </div>
 
             <!-- Zentraler Filmstreifen -->
-            <div class="flex justify-center">
+            <div class="flex justify-center z-20">
                 <div class="film-strip flex flex-row items-center w-64">
                     <div class="flex flex-col justify-between pr-3">
                         <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
@@ -131,9 +151,9 @@
                 </div>
             </div>
 
-            <!-- Rechtes Foto / Statement -->
-            <div class="flex justify-center md:justify-start">
-                <div class="polaroid w-64 transform rotate-3">
+            <!-- Rechtes Foto (Gleitet ein) -->
+            <div class="flex justify-center md:justify-start z-30">
+                <div class="polaroid right-rotate w-64 slide-right" style="--rot: 3deg;">
                     <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80" class="w-full h-48 object-cover" alt="Das Leben leicht nehmen">
                     <p class="text-xs text-center mt-3 text-gray-500 uppercase tracking-wider">02 — Das Leben leicht nehmen</p>
                 </div>
@@ -160,5 +180,18 @@
         </a>
     </section>
 
+    <!-- Scroll-Animation Script -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.innerHeight * 0.85;
+            document.querySelectorAll('.slide-left, .slide-right').forEach(el => {
+                if (el.getBoundingClientRect().top < scrollPos) {
+                    el.classList.add('active');
+                }
+            });
+        });
+        // Initialer Trigger
+        setTimeout(() => window.dispatchEvent(new Event('scroll')), 100);
+    </script>
 </body>
 </html>
