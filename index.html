@@ -1,922 +1,164 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2870
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save the Date | Celine & Justin</title>
+    
+    <!-- Open Graph Tags für WhatsApp & Messenger -->
+    <meta property="og:title" content="Save the Date! 🥂 - Celine & Justin" />
+    <meta property="og:description" content="Wir heiraten am 03. September 2027 im Q-Stall Pulheim. Klicke hier für alle Infos." />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" />
+    <meta property="og:url" content="https://anhtuan5d.github.io/CJ-save-the-date/" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: #FAF7F2; /* Eierschalenweiß als Basis */
+            color: #333;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
 
-\f0\fs24 \cf0 <!DOCTYPE html>\
-<html lang="de" class="scroll-smooth">\
-<head>\
-    <meta charset="UTF-8">\
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
-    <title>Save the Date & Scroll-Konzept Prototyp \'96 Celine & Justin</title>\
-    \
-    <!-- Tailwind CSS -->\
-    <script src="https://cdn.tailwindcss.com"></script>\
-    \
-    <!-- FontAwesome Icons -->\
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">\
-    \
-    <!-- Google Fonts: Cormorant Garamond (Editorial Serif) & Inter -->\
-    <link rel="preconnect" href="https://fonts.googleapis.com">\
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">\
-\
-    <script>\
-        tailwind.config = \{\
-            theme: \{\
-                extend: \{\
-                    colors: \{\
-                        burgundy: \{\
-                            900: '#3D1318',\
-                            800: '#521B21',\
-                            700: '#68252C',\
-                            600: '#83323B',\
-                        \},\
-                        sand: \{\
-                            50: '#FAF7F2',\
-                            100: '#F4EFE6',\
-                            200: '#EAE3D9',\
-                            300: '#D9CEBF',\
-                            400: '#C2B29F',\
-                        \},\
-                        gold: '#C5A059'\
-                    \},\
-                    fontFamily: \{\
-                        serif: ['"Cormorant Garamond"', 'serif'],\
-                        sans: ['Inter', 'sans-serif'],\
-                    \}\
-                \}\
-            \}\
-        \}\
-    </script>\
-\
-    <style>\
-        /* CSS 35mm Filmstrip Perforations */\
-        .film-sprocket \{\
-            background-image: repeating-linear-gradient(\
-                to bottom,\
-                transparent 0px,\
-                transparent 7px,\
-                #ffffff 7px,\
-                #ffffff 18px,\
-                transparent 18px,\
-                transparent 25px\
-            );\
-        \}\
-\
-        /* Glassmorphism overlays */\
-        .glass-dark \{\
-            background: rgba(20, 10, 12, 0.65);\
-            backdrop-filter: blur(16px);\
-            border: 1px solid rgba(255, 255, 255, 0.12);\
-        \}\
-        \
-        .glass-light \{\
-            background: rgba(255, 255, 255, 0.85);\
-            backdrop-filter: blur(12px);\
-            border: 1px solid rgba(217, 206, 191, 0.5);\
-        \}\
-\
-        /* Smooth slide-in transitions for side photos */\
-        .side-photo-left \{\
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;\
-            will-change: transform, opacity;\
-        \}\
-\
-        .side-photo-right \{\
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;\
-            will-change: transform, opacity;\
-        \}\
-\
-        /* Custom Scrollbar */\
-        ::-webkit-scrollbar \{\
-            width: 8px;\
-        \}\
-        ::-webkit-scrollbar-track \{\
-            background: #3D1318;\
-        \}\
-        ::-webkit-scrollbar-thumb \{\
-            background: #83323B;\
-            border-radius: 4px;\
-        \}\
-    </style>\
-</head>\
-<body id="app-body" class="text-burgundy-900 font-sans antialiased transition-colors duration-700">\
-\
-    <!-- FLOATING TOP NAVIGATION & CONTROL BAR -->\
-    <header class="fixed top-4 inset-x-0 z-50 max-w-5xl mx-auto px-4">\
-        <nav class="glass-dark rounded-full px-4 py-2.5 flex items-center justify-between shadow-2xl">\
-            <!-- Initials Monogram -->\
-            <div class="flex items-center gap-3">\
-                <span class="font-serif italic text-2xl font-semibold tracking-wider text-sand-100" id="nav-initials">L & J</span>\
-                <span class="hidden sm:inline-block h-3 w-px bg-white/20"></span>\
-                <span class="hidden sm:inline-block text-[10px] uppercase tracking-widest text-sand-300 font-mono">Interactive Prototype</span>\
-            </div>\
-\
-            <!-- View Mode Switcher -->\
-            <div class="flex items-center bg-black/40 p-1 rounded-full border border-white/10 text-xs font-medium">\
-                <button onclick="setMode('live')" id="btn-mode-live" class="px-3.5 py-1.5 rounded-full transition-all bg-sand-100 text-burgundy-900 font-semibold shadow-sm flex items-center gap-1.5">\
-                    <i class="fa-solid fa-play text-[10px]"></i>\
-                    <span>Live Website</span>\
-                </button>\
-                <button onclick="setMode('concept')" id="btn-mode-concept" class="px-3.5 py-1.5 rounded-full transition-all text-sand-300 hover:text-white flex items-center gap-1.5">\
-                    <i class="fa-solid fa-table-columns text-[10px]"></i>\
-                    <span>Scroll-Konzept (0-100%)</span>\
-                </button>\
-            </div>\
-\
-            <!-- Data Customizer & Calendar CTA -->\
-            <div class="flex items-center gap-2">\
-                <button onclick="toggleEditor()" class="bg-white/10 hover:bg-white/20 text-sand-100 text-xs px-3.5 py-2 rounded-full border border-white/15 transition-all flex items-center gap-1.5">\
-                    <i class="fa-solid fa-sliders text-amber-300"></i>\
-                    <span class="hidden md:inline">Daten anpassen</span>\
-                </button>\
-                <button onclick="downloadICS()" class="bg-sand-100 hover:bg-white text-burgundy-900 text-xs font-semibold px-4 py-2 rounded-full shadow-lg transition-all flex items-center gap-1.5">\
-                    <i class="fa-regular fa-calendar-check text-burgundy-800"></i>\
-                    <span class="hidden sm:inline">Datum vormerken</span>\
-                </button>\
-            </div>\
-        </nav>\
-    </header>\
-\
-    <!-- ================================================================= -->\
-    <!-- MODE 1: LIVE INTERACTIVE WEBSITE (DYNAMIC SCROLLING EXPERIENCE) -->\
-    <!-- ================================================================= -->\
-    <div id="view-live-website" class="transition-opacity duration-500" style="background: linear-gradient(to bottom, #521B21 0%, #521B21 75vh, #FAF7F2 140vh, #FAF7F2 100%);">\
-        \
-        <!-- HERO SECTION -->\
-        <section class="pt-32 pb-16 px-4 text-center min-h-[60vh] flex flex-col justify-center items-center relative overflow-hidden">\
-            <div class="max-w-3xl mx-auto space-y-4 relative z-10">\
-                <div class="text-[11px] font-mono uppercase tracking-[0.3em] text-sand-300/80 mb-2" id="hero-kicker">\
-                    EIN NEUES KAPITEL. MIT EUCH.\
-                </div>\
-                \
-                <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-normal tracking-tight text-sand-50 leading-none">\
-                    Save the Date\
-                </h1>\
-                \
-                <p class="font-serif italic text-2xl sm:text-3xl text-sand-200 tracking-wide pt-2" id="hero-couple-names">\
-                    Celine & Justin\
-                </p>\
-\
-                <p class="text-xs sm:text-sm text-sand-300/90 font-light max-w-md mx-auto pt-2 leading-relaxed" id="hero-subtitle">\
-                    Ein Sommerabend. Unsere Lieblingsmenschen. Und ein Ja f\'fcr immer.\
-                </p>\
-            </div>\
-\
-            <!-- Header info bars -->\
-            <div class="w-full max-w-5xl px-6 flex justify-between items-center text-[11px] font-mono text-sand-300/60 uppercase tracking-widest pt-12">\
-                <span id="header-top-left">L & J</span>\
-                <span id="header-top-mid">WIR HEIRATEN</span>\
-                <span id="header-top-right">03. SEPTEMBER 2027</span>\
-            </div>\
-        </section>\
-\
-        <!-- MAIN SCROLLING FILMSTRIP & SLIDING PHOTOS SECTION -->\
-        <section class="relative max-w-6xl mx-auto px-4 py-12 min-h-[2200px]" id="scroll-stage">\
-            \
-            <!-- FLOATING QUOTE LEFT -->\
-            <div class="hidden lg:block absolute left-8 top-12 w-60 space-y-2 text-left">\
-                <p class="font-serif italic text-xl text-burgundy-900 leading-snug" id="quote-left">\
-                    Das Sch\'f6nste liegt noch vor uns.\
-                </p>\
-                <div class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/60 flex items-center gap-2">\
-                    <i class="fa-solid fa-arrow-down text-amber-500 animate-bounce"></i>\
-                    <span>SCROLLT MIT UNS</span>\
-                </div>\
-            </div>\
-\
-            <!-- FLOATING DATE RIGHT -->\
-            <div class="hidden lg:block absolute right-8 top-32 w-56 text-right">\
-                <span class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/60 block mb-1">FREIHALTEN & VORFREUEN</span>\
-                <div class="font-serif text-3xl text-burgundy-900 font-light" id="quote-date-display">03 / 09 / 2027</div>\
-            </div>\
-\
-            <!-- CENTER 35MM FILMSTRIP CONTAINER -->\
-            <div class="max-w-[340px] sm:max-w-[380px] mx-auto bg-[#181616] rounded-md p-3 sm:p-4 shadow-2xl border border-stone-800 relative z-20 space-y-6">\
-                \
-                <!-- Film Frame 1 -->\
-                <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">\
-                    <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">\
-                        <img id="img-film-1" src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">\
-                    </div>\
-                    <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">\
-                        <span id="film-caption-1">UNSER SOMMER - 35 MM</span>\
-                        <span>01 \uc0\u9655 </span>\
-                    </div>\
-                    <!-- Left & Right Sprocket holes simulation -->\
-                    <div class="absolute -left-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>\
-                    <div class="absolute -right-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>\
-                </div>\
-\
-                <!-- Film Frame 2 -->\
-                <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">\
-                    <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">\
-                        <img id="img-film-2" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">\
-                    </div>\
-                    <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">\
-                        <span id="film-caption-2">UNSER SOMMER - 35 MM</span>\
-                        <span>02 \uc0\u9655 </span>\
-                    </div>\
-                    <div class="absolute -left-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>\
-                    <div class="absolute -right-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>\
-                </div>\
-\
-                <!-- Film Frame 3 -->\
-                <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">\
-                    <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">\
-                        <img id="img-film-3" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">\
-                    </div>\
-                    <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">\
-                        <span id="film-caption-3">UNSER SOMMER - 35 MM</span>\
-                        <span>03 \uc0\u9655 </span>\
-                    </div>\
-                    <div class="absolute -left-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>\
-                    <div class="absolute -right-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>\
-                </div>\
-\
-                <!-- Film Frame 4 -->\
-                <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">\
-                    <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">\
-                        <img id="img-film-4" src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">\
-                    </div>\
-                    <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">\
-                        <span id="film-caption-4">UNSER SOMMER - 35 MM</span>\
-                        <span>04 \uc0\u9655 </span>\
-                    </div>\
-                    <div class="text-center text-[8px] font-mono text-stone-400 uppercase tracking-widest pt-2 border-t border-stone-200 mt-2">\
-                        TO BE CONTINUED\
-                    </div>\
-                    <div class="absolute -left-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>\
-                    <div class="absolute -right-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>\
-                </div>\
-\
-            </div>\
-\
-            <!-- DYNAMIC DYNAMICALLY SLIDING SIDE PHOTOS (POSITIONED ABSOLUTELY AROUND FILMSTRIP) -->\
-            \
-            <!-- Side Photo 1 (GLIDES FROM LEFT) -->\
-            <div id="side-photo-1" class="side-photo-left absolute left-4 sm:left-8 md:left-12 lg:left-16 top-[320px] w-52 sm:w-64 md:w-72 bg-white p-3 rounded shadow-2xl z-30 transform -rotate-6 opacity-0">\
-                <div class="aspect-[4/3] overflow-hidden bg-stone-100 mb-2">\
-                    <img id="img-side-1" src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80" alt="Side 1" class="w-full h-full object-cover">\
-                </div>\
-                <div class="text-[10px] font-mono text-stone-600 tracking-wider uppercase flex items-center justify-between">\
-                    <span id="cap-side-1">01 \'97 ZUSAMMEN LOSGEHEN</span>\
-                </div>\
-            </div>\
-\
-            <!-- Side Text Quote Middle -->\
-            <div id="side-text-mid" class="side-photo-left absolute left-4 sm:left-12 lg:left-20 top-[900px] max-w-xs space-y-2 z-40 opacity-0">\
-                <p class="font-serif italic text-2xl sm:text-3xl text-burgundy-900 leading-snug" id="quote-mid">\
-                    \'84Mit dir f\'fchlt sich auch der Alltag nach Sommer an.\'93\
-                </p>\
-                <div class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/60">UND DAS DARF SO BLEIBEN.</div>\
-            </div>\
-\
-            <!-- Side Photo 2 (GLIDES FROM RIGHT) -->\
-            <div id="side-photo-2" class="side-photo-right absolute right-4 sm:right-8 md:right-12 lg:right-16 top-[720px] w-56 sm:w-64 md:w-72 bg-white p-3 rounded shadow-2xl z-30 transform rotate-6 opacity-0">\
-                <div class="aspect-[4/3] overflow-hidden bg-stone-100 mb-2">\
-                    <img id="img-side-2" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80" alt="Side 2" class="w-full h-full object-cover grayscale">\
-                </div>\
-                <div class="text-[10px] font-mono text-stone-600 tracking-wider uppercase">\
-                    <span id="cap-side-2">02 \'97 DAS LEBEN LEICHT NEHMEN</span>\
-                </div>\
-            </div>\
-\
-            <!-- Side Photo 3 (GLIDES FROM LEFT BOTTOM) -->\
-            <div id="side-photo-3" class="side-photo-left absolute left-4 sm:left-8 md:left-16 top-[1380px] w-56 sm:w-64 md:w-72 bg-white p-3 rounded shadow-2xl z-30 transform -rotate-3 opacity-0">\
-                <div class="aspect-[4/3] overflow-hidden bg-stone-100 mb-2">\
-                    <img id="img-side-3" src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80" alt="Side 3" class="w-full h-full object-cover">\
-                </div>\
-                <div class="text-[10px] font-mono text-stone-600 tracking-wider uppercase">\
-                    <span id="cap-side-3">03 \'97 NOCH SO VIEL VOR UNS</span>\
-                </div>\
-            </div>\
-\
-            <!-- Side Text Right Bottom -->\
-            <div id="side-text-bottom" class="side-photo-right absolute right-4 sm:right-12 lg:right-20 top-[1480px] max-w-xs text-right space-y-2 z-40 opacity-0">\
-                <p class="font-serif text-3xl sm:text-4xl text-burgundy-900 leading-tight" id="quote-bottom">\
-                    Und jetzt: ein Tag, der f\'fcr immer bleibt.\
-                </p>\
-                <div class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/60">MIT EUCH AN UNSERER SEITE.</div>\
-            </div>\
-\
-        </section>\
-\
-        <!-- BOTTOM CALL TO ACTION SECTION -->\
-        <section class="text-burgundy-900 pt-32 pb-24 px-4 text-center relative z-30 transition-colors duration-700" id="section-cta">\
-            <div class="max-w-3xl mx-auto space-y-6">\
-                \
-                <div class="text-xs font-mono uppercase tracking-[0.25em] text-burgundy-800/70">\
-                    WIR SAGEN JA. IHR SEID DABEI.\
-                </div>\
-\
-                <h2 class="font-serif text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-burgundy-900">\
-                    Haltet uns diesen Tag frei.\
-                </h2>\
-\
-                <div class="font-serif text-5xl sm:text-7xl md:text-8xl text-burgundy-800 font-light py-2" id="cta-big-date">\
-                    03. September 2027\
-                </div>\
-\
-                <div class="flex flex-wrap justify-center items-center gap-4 text-xs font-mono uppercase tracking-widest text-burgundy-800/80 pt-2 border-t border-burgundy-900/10 max-w-xl mx-auto">\
-                    <span id="cta-day-info">FREITAG \'95 EIN GANZER TAG F\'dcR DIE LIEBE</span>\
-                    <span>|</span>\
-                    <span id="cta-location-info">Q-Stall - Pulheim</span>\
-                </div>\
-\
-                <p class="text-xs sm:text-sm text-stone-700 max-w-md mx-auto leading-relaxed pt-2" id="cta-description">\
-                    Wir m\'f6chten mit euch lachen, tanzen und Erinnerungen sammeln. Die Einladung mit allen Details kommt noch. F\'fcr heute: Tragt uns schon mal in euren Kalender ein.\
-                </p>\
-\
-                <div class="pt-6">\
-                    <button onclick="downloadICS()" class="inline-flex items-center gap-2 bg-burgundy-900 hover:bg-burgundy-800 text-sand-100 font-medium text-xs uppercase tracking-widest px-8 py-4 rounded-full shadow-xl transition-all transform hover:-translate-y-0.5">\
-                        <i class="fa-regular fa-calendar-plus text-amber-400"></i>\
-                        <span>DATUM VORMERKEN (.ICS)</span>\
-                    </button>\
-                </div>\
-\
-            </div>\
-        </section>\
-\
-        <!-- FOOTER -->\
-        <footer class="bg-burgundy-900 text-sand-300 py-12 px-4 text-center border-t border-white/10 text-xs font-light">\
-            <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 font-mono">\
-                <div class="text-left">\
-                    <span class="block text-[10px] uppercase text-sand-400">WIR FREUEN UNS AUF EUCH.</span>\
-                    <span class="font-serif italic text-lg text-sand-100 font-sans" id="footer-couple">Eure Celine & Justin</span>\
-                </div>\
-                <div class="text-xs italic font-serif text-sand-200" id="footer-tagline">\
-                    Das wird unser Sommer.\
-                </div>\
-                <div class="text-stone-400 text-[10px]" id="footer-initials-year">\
-                    L & J \'b7 2027\
-                </div>\
-            </div>\
-        </footer>\
-\
-    </div>\
-\
-    <!-- ================================================================= -->\
-    <!-- MODE 2: SCROLL-KONZEPT OVERVIEW (IMAGE 1 BREAKDOWN CONCEPT) -->\
-    <!-- ================================================================= -->\
-    <div id="view-scroll-concept" class="hidden min-h-screen bg-[#EBE5DC] text-stone-800 pt-28 pb-20 px-4 sm:px-8">\
-        \
-        <div class="max-w-6xl mx-auto space-y-10">\
-            \
-            <!-- Concept Header -->\
-            <div class="border-b border-stone-300 pb-6 flex flex-col sm:flex-row justify-between sm:items-end gap-4">\
-                <div>\
-                    <div class="text-xs font-mono uppercase tracking-widest text-stone-500 mb-1">\
-                        SCROLL-KONZEPT \'b7 VISUALISIERUNG DER 3 SCROLL-PHASEN\
-                    </div>\
-                    <h1 class="font-serif text-4xl sm:text-5xl font-normal text-stone-900">\
-                        Eine Geschichte, die sich entfaltet.\
-                    </h1>\
-                </div>\
-                <div class="text-stone-400 text-3xl font-serif">\uc0\u8595 </div>\
-            </div>\
-\
-            <!-- 3 Stages Grid Columns -->\
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">\
-                \
-                <!-- Stage 1: 0% -->\
-                <div class="space-y-4">\
-                    <div class="flex justify-between items-baseline border-b border-stone-300 pb-2">\
-                        <h3 class="font-serif text-2xl font-normal text-stone-900">Am Anfang</h3>\
-                        <span class="font-mono text-xs text-stone-500">0 %</span>\
-                    </div>\
-\
-                    <!-- Card Preview 0% -->\
-                    <div class="bg-[#F5F0E8] rounded-xl p-6 shadow-sm border border-stone-300 min-h-[420px] relative overflow-hidden flex flex-col items-center">\
-                        <div class="text-[10px] font-serif italic text-stone-500 self-start mb-4">L & J</div>\
-                        <h4 class="font-serif text-3xl text-stone-900 mb-1">Save the Date</h4>\
-                        <span class="font-serif italic text-sm text-stone-600 mb-6">Lena & Jonas</span>\
-\
-                        <!-- Filmstrip initial state -->\
-                        <div class="w-32 bg-stone-900 p-2 rounded shadow-md border border-stone-800 relative z-10">\
-                            <div class="aspect-[4/5] bg-stone-200 overflow-hidden">\
-                                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">\
-                            </div>\
-                            <div class="h-8 bg-stone-200 mt-2 opacity-50"></div>\
-                        </div>\
-\
-                        <!-- Side photos barely visible/off-screen -->\
-                        <div class="absolute left-1 top-44 w-16 h-20 bg-white p-1 shadow rounded transform -rotate-12 opacity-30">\
-                            <div class="w-full h-full bg-stone-200"></div>\
-                        </div>\
-                        <div class="absolute right-1 top-52 w-16 h-20 bg-white p-1 shadow rounded transform rotate-12 opacity-30">\
-                            <div class="w-full h-full bg-stone-200"></div>\
-                        </div>\
-                    </div>\
-\
-                    <p class="text-xs text-stone-600 leading-relaxed">\
-                        Der Titel steht im Fokus. Nur der Anfang des Filmstreifens ist sichtbar.\
-                    </p>\
-                </div>\
-\
-                <!-- Stage 2: 50% -->\
-                <div class="space-y-4">\
-                    <div class="flex justify-between items-baseline border-b border-stone-300 pb-2">\
-                        <h3 class="font-serif text-2xl font-normal text-stone-900">Mittendrin</h3>\
-                        <span class="font-mono text-xs text-stone-500">50 %</span>\
-                    </div>\
-\
-                    <!-- Card Preview 50% -->\
-                    <div class="bg-[#F5F0E8] rounded-xl p-6 shadow-sm border border-stone-300 min-h-[420px] relative overflow-hidden flex flex-col items-center">\
-                        <div class="text-[10px] font-serif italic text-stone-500 self-start mb-4">L & J</div>\
-                        <h4 class="font-serif text-3xl text-stone-900 mb-1">Save the Date</h4>\
-                        <span class="font-serif italic text-sm text-stone-600 mb-6">Lena & Jonas</span>\
-\
-                        <!-- Filmstrip expanding -->\
-                        <div class="w-32 bg-stone-900 p-2 rounded shadow-md border border-stone-800 relative z-10 space-y-2">\
-                            <div class="aspect-[4/5] bg-stone-200 overflow-hidden">\
-                                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">\
-                            </div>\
-                            <div class="aspect-[4/5] bg-stone-200 overflow-hidden">\
-                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">\
-                            </div>\
-                        </div>\
-\
-                        <!-- Side photos sliding in -->\
-                        <div class="absolute left-3 top-36 w-20 bg-white p-1 shadow-md rounded transform -rotate-6 transition-all duration-300">\
-                            <div class="aspect-square bg-stone-200 overflow-hidden">\
-                                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">\
-                            </div>\
-                        </div>\
-                        <div class="absolute right-3 top-56 w-20 bg-white p-1 shadow-md rounded transform rotate-6 transition-all duration-300">\
-                            <div class="aspect-square bg-stone-200 overflow-hidden">\
-                                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover grayscale">\
-                            </div>\
-                        </div>\
-                    </div>\
-\
-                    <p class="text-xs text-stone-600 leading-relaxed">\
-                        Der Film wird nach unten freigelegt. Fotos gleiten langsam von links und rechts herein.\
-                    </p>\
-                </div>\
-\
-                <!-- Stage 3: 100% -->\
-                <div class="space-y-4">\
-                    <div class="flex justify-between items-baseline border-b border-stone-300 pb-2">\
-                        <h3 class="font-serif text-2xl font-normal text-stone-900">Ganz entfaltet</h3>\
-                        <span class="font-mono text-xs text-stone-500">100 %</span>\
-                    </div>\
-\
-                    <!-- Card Preview 100% -->\
-                    <div class="bg-[#F5F0E8] rounded-xl p-6 shadow-sm border border-stone-300 min-h-[420px] relative overflow-hidden flex flex-col items-center">\
-                        <div class="text-[10px] font-serif italic text-stone-500 self-start mb-4">L & J</div>\
-                        <h4 class="font-serif text-3xl text-stone-900 mb-1">Save the Date</h4>\
-                        <span class="font-serif italic text-sm text-stone-600 mb-6">Lena & Jonas</span>\
-\
-                        <!-- Filmstrip fully unfolded -->\
-                        <div class="w-32 bg-stone-900 p-2 rounded shadow-md border border-stone-800 relative z-10 space-y-2">\
-                            <div class="aspect-[4/5] bg-stone-200 overflow-hidden">\
-                                <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">\
-                            </div>\
-                            <div class="aspect-[4/5] bg-stone-200 overflow-hidden">\
-                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">\
-                            </div>\
-                        </div>\
-\
-                        <!-- Side photos resting into position -->\
-                        <div class="absolute left-4 top-32 w-22 bg-white p-1.5 shadow-lg rounded transform -rotate-6">\
-                            <div class="aspect-square bg-stone-200 overflow-hidden">\
-                                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover">\
-                            </div>\
-                        </div>\
-                        <div class="absolute right-4 top-48 w-22 bg-white p-1.5 shadow-lg rounded transform rotate-6">\
-                            <div class="aspect-square bg-stone-200 overflow-hidden">\
-                                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover grayscale">\
-                            </div>\
-                        </div>\
-                    </div>\
-\
-                    <p class="text-xs text-stone-600 leading-relaxed">\
-                        Die Bilder kommen sanft zur Ruhe. Die Erinnerungen rahmen den Filmstreifen ein.\
-                    </p>\
-                </div>\
-\
-            </div>\
-\
-            <!-- Bottom Mechanics Explanation Bar -->\
-            <div class="bg-[#DFD8CD] p-4 rounded-xl border border-stone-300 text-xs font-mono text-stone-700 flex flex-col sm:flex-row justify-between items-center gap-2">\
-                <div class="flex items-center gap-2">\
-                    <i class="fa-solid fa-arrow-right text-stone-500"></i>\
-                    <span>Von links eintreten &nbsp;\'b7&nbsp; Film vertikal enth\'fcllen &nbsp;\'b7&nbsp; Von rechts eintreten</span>\
-                </div>\
-                <div class="text-stone-500 text-[10px]">\
-                    Interaktive Simulation in der Live-Website aktiv\
-                </div>\
-            </div>\
-\
-        </div>\
-\
-    </div>\
-\
-    <!-- ================================================================= -->\
-    <!-- INTERACTIVE DATA EDITOR DRAWER (SLIDES IN FROM RIGHT) -->\
-    <!-- ================================================================= -->\
-    <aside id="editor-drawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-stone-900 text-stone-100 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out border-l border-stone-800 flex flex-col">\
-        \
-        <!-- Drawer Header -->\
-        <div class="p-5 border-b border-stone-800 flex justify-between items-center bg-stone-950">\
-            <div class="flex items-center gap-2 text-amber-400 font-mono text-xs uppercase tracking-wider">\
-                <i class="fa-solid fa-pen-to-square"></i>\
-                <span>Prototyp Daten-Editor</span>\
-            </div>\
-            <button onclick="toggleEditor()" class="text-stone-400 hover:text-white text-lg w-8 h-8 rounded-full flex items-center justify-center hover:bg-stone-800">\
-                <i class="fa-solid fa-xmark"></i>\
-            </button>\
-        </div>\
-\
-        <!-- Form Scroll Area -->\
-        <div class="p-6 space-y-6 overflow-y-auto flex-1 text-xs font-sans">\
-            \
-            <!-- Quick Presets -->\
-            <div class="space-y-2">\
-                <label class="font-mono text-[10px] uppercase text-stone-400 tracking-wider">Schnell-Presets</label>\
-                <div class="grid grid-cols-2 gap-2">\
-                    <button onclick="loadPreset('celine')" class="p-2.5 bg-stone-800 hover:bg-stone-700 rounded-lg text-left border border-stone-700">\
-                        <span class="font-semibold block text-stone-200">Celine & Justin</span>\
-                        <span class="text-[10px] text-stone-400">03.09.2027 \'95 Q-Stall</span>\
-                    </button>\
-                    <button onclick="loadPreset('lena')" class="p-2.5 bg-stone-800 hover:bg-stone-700 rounded-lg text-left border border-stone-700">\
-                        <span class="font-semibold block text-stone-200">Lena & Jonas</span>\
-                        <span class="text-[10px] text-stone-400">12.06.2027 \'95 Toskana</span>\
-                    </button>\
-                </div>\
-            </div>\
-\
-            <!-- Theme Color Selector -->\
-            <div class="space-y-2 pt-2 border-t border-stone-800">\
-                <label class="font-mono text-[10px] uppercase text-stone-400 tracking-wider">Farbschema der Website</label>\
-                <div class="grid grid-cols-2 gap-2">\
-                    <button onclick="setTheme('burgundy')" class="p-2.5 rounded-lg border text-left flex items-center gap-2 bg-[#3D1318] border-red-900 text-sand-100">\
-                        <span class="w-3 h-3 rounded-full bg-red-700"></span>\
-                        <span>Marsala / Burgund</span>\
-                    </button>\
-                    <button onclick="setTheme('sand')" class="p-2.5 rounded-lg border text-left flex items-center gap-2 bg-[#EFECE6] border-stone-300 text-stone-900">\
-                        <span class="w-3 h-3 rounded-full bg-stone-400"></span>\
-                        <span>Naturleinen / Sand</span>\
-                    </button>\
-                    <button onclick="setTheme('terracotta')" class="p-2.5 rounded-lg border text-left flex items-center gap-2 bg-[#4A261D] border-orange-900 text-sand-100">\
-                        <span class="w-3 h-3 rounded-full bg-orange-600"></span>\
-                        <span>Warm Terracotta</span>\
-                    </button>\
-                    <button onclick="setTheme('sage')" class="p-2.5 rounded-lg border text-left flex items-center gap-2 bg-[#212E27] border-emerald-900 text-sand-100">\
-                        <span class="w-3 h-3 rounded-full bg-emerald-600"></span>\
-                        <span>Eukalyptus Gr\'fcn</span>\
-                    </button>\
-                </div>\
-            </div>\
-\
-            <!-- Couple & Event Info -->\
-            <div class="space-y-3 pt-2 border-t border-stone-800">\
-                <label class="font-mono text-[10px] uppercase text-amber-400 tracking-wider block">1. Brautpaar & Event Daten</label>\
-                \
-                <div>\
-                    <span class="text-stone-400 block mb-1">Namen des Brautpaars:</span>\
-                    <input type="text" id="input-names" value="Celine & Justin" oninput="updateData()" class="w-full bg-stone-800 border border-stone-700 rounded-lg p-2.5 text-stone-100 focus:outline-none focus:border-amber-400">\
-                </div>\
-\
-                <div class="grid grid-cols-2 gap-2">\
-                    <div>\
-                        <span class="text-stone-400 block mb-1">Datum:</span>\
-                        <input type="text" id="input-date" value="03. September 2027" oninput="updateData()" class="w-full bg-stone-800 border border-stone-700 rounded-lg p-2.5 text-stone-100 focus:outline-none focus:border-amber-400">\
-                    </div>\
-                    <div>\
-                        <span class="text-stone-400 block mb-1">Location:</span>\
-                        <input type="text" id="input-location" value="Q-Stall - Pulheim" oninput="updateData()" class="w-full bg-stone-800 border border-stone-700 rounded-lg p-2.5 text-stone-100 focus:outline-none focus:border-amber-400">\
-                    </div>\
-                </div>\
-\
-                <div>\
-                    <span class="text-stone-400 block mb-1">Untertitel Hero:</span>\
-                    <input type="text" id="input-subtitle" value="Ein Sommerabend. Unsere Lieblingsmenschen. Und ein Ja f\'fcr immer." oninput="updateData()" class="w-full bg-stone-800 border border-stone-700 rounded-lg p-2.5 text-stone-100 focus:outline-none focus:border-amber-400">\
-                </div>\
-            </div>\
-\
-            <!-- Quotes & Text Blocks -->\
-            <div class="space-y-3 pt-2 border-t border-stone-800">\
-                <label class="font-mono text-[10px] uppercase text-amber-400 tracking-wider block">2. Zitate & Beschriftungen</label>\
-                \
-                <div>\
-                    <span class="text-stone-400 block mb-1">Zitat Links oben:</span>\
-                    <input type="text" id="input-quote-1" value="Das Sch\'f6nste liegt noch vor uns." oninput="updateData()" class="w-full bg-stone-800 border border-stone-700 rounded-lg p-2.5 text-stone-100 focus:outline-none focus:border-amber-400">\
-                </div>\
-\
-                <div>\
-                    <span class="text-stone-400 block mb-1">Zitat Mitte:</span>\
-                    <input type="text" id="input-quote-2" value="\'84Mit dir f\'fchlt sich auch der Alltag nach Sommer an.\'93" oninput="updateData()" class="w-full bg-stone-800 border border-stone-700 rounded-lg p-2.5 text-stone-100 focus:outline-none focus:border-amber-400">\
-                </div>\
-            </div>\
-\
-            <!-- Images Customizer -->\
-            <div class="space-y-3 pt-2 border-t border-stone-800">\
-                <label class="font-mono text-[10px] uppercase text-amber-400 tracking-wider block">3. Fotos austauschen (URLs)</label>\
-                \
-                <div>\
-                    <span class="text-stone-400 block mb-1">Filmstreifen Bild 1:</span>\
-                    <input type="text" id="input-img-f1" value="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" oninput="updateData()" class="w-full bg-stone-800 border border-stone-700 rounded-lg p-2.5 text-stone-100 font-mono text-[11px] focus:outline-none focus:border-amber-400">\
-                </div>\
-\
-                <div>\
-                    <span class="text-stone-400 block mb-1">Filmstreifen Bild 2:</span>\
-                    <input type="text" id="input-img-f2" value="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" oninput="updateData()" class="w-full bg-stone-800 border border-stone-700 rounded-lg p-2.5 text-stone-100 font-mono text-[11px] focus:outline-none focus:border-amber-400">\
-                </div>\
-\
-                <div>\
-                    <span class="text-stone-400 block mb-1">Gleit-Foto 1 (Links):</span>\
-                    <input type="text" id="input-img-s1" value="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80" oninput="updateData()" class="w-full bg-stone-800 border border-stone-700 rounded-lg p-2.5 text-stone-100 font-mono text-[11px] focus:outline-none focus:border-amber-400">\
-                </div>\
-\
-                <div>\
-                    <span class="text-stone-400 block mb-1">Gleit-Foto 2 (Rechts):</span>\
-                    <input type="text" id="input-img-s2" value="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80" oninput="updateData()" class="w-full bg-stone-800 border border-stone-700 rounded-lg p-2.5 text-stone-100 font-mono text-[11px] focus:outline-none focus:border-amber-400">\
-                </div>\
-            </div>\
-\
-        </div>\
-\
-        <!-- Drawer Footer -->\
-        <div class="p-4 border-t border-stone-800 bg-stone-950 flex gap-2">\
-            <button onclick="toggleEditor()" class="w-full bg-amber-500 hover:bg-amber-400 text-stone-950 font-semibold py-3 rounded-lg text-xs uppercase tracking-wider transition-all">\
-                \'c4nderungen \'dcbernehmen\
-            </button>\
-        </div>\
-\
-    </aside>\
-\
-    <!-- TOAST NOTIFICATION -->\
-    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-stone-900 text-stone-100 border border-amber-500/50 px-5 py-3 rounded-xl shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 text-xs">\
-        <i class="fa-solid fa-circle-check text-amber-400 text-base"></i>\
-        <span id="toast-message">Kalendereintrag (.ics) wurde heruntergeladen!</span>\
-    </div>\
-\
-\
-    <!-- ================================================================= -->\
-    <!-- JAVASCRIPT LOGIC -->\
-    <!-- ================================================================= -->\
-    <script>\
-        // --- 1. VIEW MODE SWITCHER ---\
-        function setMode(mode) \{\
-            const liveView = document.getElementById('view-live-website');\
-            const conceptView = document.getElementById('view-scroll-concept');\
-            const btnLive = document.getElementById('btn-mode-live');\
-            const btnConcept = document.getElementById('btn-mode-concept');\
-\
-            if (mode === 'concept') \{\
-                liveView.classList.add('hidden');\
-                conceptView.classList.remove('hidden');\
-                btnConcept.className = "px-3.5 py-1.5 rounded-full transition-all bg-stone-800 text-white font-semibold shadow-sm flex items-center gap-1.5";\
-                btnLive.className = "px-3.5 py-1.5 rounded-full transition-all text-sand-300 hover:text-white flex items-center gap-1.5";\
-            \} else \{\
-                conceptView.classList.add('hidden');\
-                liveView.classList.remove('hidden');\
-                btnLive.className = "px-3.5 py-1.5 rounded-full transition-all bg-sand-100 text-burgundy-900 font-semibold shadow-sm flex items-center gap-1.5";\
-                btnConcept.className = "px-3.5 py-1.5 rounded-full transition-all text-sand-300 hover:text-white flex items-center gap-1.5";\
-            \}\
-        \}\
-\
-        // --- 2. EDITOR DRAWER TOGGLE ---\
-        function toggleEditor() \{\
-            const drawer = document.getElementById('editor-drawer');\
-            drawer.classList.toggle('translate-x-full');\
-        \}\
-\
-        // --- 3. LIVE SCROLL ANIMATION FOR SIDE PHOTOS ---\
-        function handleScroll() \{\
-            const scrollY = window.scrollY;\
-\
-            const side1 = document.getElementById('side-photo-1');\
-            const side2 = document.getElementById('side-photo-2');\
-            const side3 = document.getElementById('side-photo-3');\
-            const textMid = document.getElementById('side-text-mid');\
-            const textBottom = document.getElementById('side-text-bottom');\
-\
-            if (!side1) return;\
-\
-            // Side Photo 1 (Slide in around 200px scroll)\
-            if (scrollY > 150) \{\
-                side1.style.opacity = '1';\
-                side1.style.transform = 'translateX(0) rotate(-6deg)';\
-            \} else \{\
-                side1.style.opacity = '0';\
-                side1.style.transform = 'translateX(-80px) rotate(-12deg)';\
-            \}\
-\
-            // Side Photo 2 (Slide in around 500px scroll)\
-            if (scrollY > 450) \{\
-                side2.style.opacity = '1';\
-                side2.style.transform = 'translateX(0) rotate(6deg)';\
-            \} else \{\
-                side2.style.opacity = '0';\
-                side2.style.transform = 'translateX(80px) rotate(12deg)';\
-            \}\
-\
-            // Text Mid\
-            if (scrollY > 700) \{\
-                textMid.style.opacity = '1';\
-                textMid.style.transform = 'translateX(0)';\
-            \} else \{\
-                textMid.style.opacity = '0';\
-                textMid.style.transform = 'translateX(-50px)';\
-            \}\
-\
-            // Side Photo 3 & Text Bottom\
-            if (scrollY > 1100) \{\
-                side3.style.opacity = '1';\
-                side3.style.transform = 'translateX(0) rotate(-3deg)';\
-                textBottom.style.opacity = '1';\
-                textBottom.style.transform = 'translateX(0)';\
-            \} else \{\
-                side3.style.opacity = '0';\
-                side3.style.transform = 'translateX(-60px) rotate(-8deg)';\
-                textBottom.style.opacity = '0';\
-                textBottom.style.transform = 'translateX(60px)';\
-            \}\
-\
-            // --- EASTER EGG: Katzenpfoten-Animation ---\
-            const paws = document.querySelectorAll('.cat-paw');\
-            const vh = window.innerHeight;\
-            paws.forEach((paw) => \{\
-                const rect = paw.getBoundingClientRect();\
-                // Pfoten tauchen beim Scrollen auf und faden wieder weg\
-                if (rect.top > vh * 0.05 && rect.top < vh * 0.95) \{\
-                    paw.style.opacity = '0.65'; // Deutlichere orange Sichtbarkeit\
-                    paw.style.transform = paw.dataset.rot + ' scale(1)';\
-                \} else \{\
-                    paw.style.opacity = '0';\
-                    paw.style.transform = paw.dataset.rot + ' scale(0.5)';\
-                \}\
-            \});\
-        \}\
-\
-        window.addEventListener('scroll', handleScroll);\
-\
-        // --- 3.5. EASTER EGG: KATZENPFOTEN INITIALISIEREN ---\
-        function initPaws() \{\
-            const stage = document.getElementById('scroll-stage');\
-            if (!stage) return;\
-            \
-            const pawContainer = document.createElement('div');\
-            pawContainer.id = 'paw-tracks';\
-            // z-[5] stellt sicher, dass es \'fcber dem Background (-1) aber unter Text (40) / Fotos (30) liegt.\
-            pawContainer.className = 'absolute right-8 sm:right-16 md:right-24 lg:right-32 top-32 bottom-32 w-24 pointer-events-none z-[5]';\
-            stage.appendChild(pawContainer);\
-\
-            // 30 Pfotenabdr\'fccke entlang der Scroll-Fl\'e4che generieren\
-            for(let i=0; i<30; i++) \{\
-                const paw = document.createElement('i');\
-                const isRight = i % 2 === 0;\
-                // Rotation um 180 Grad nach unten drehen + leichter Winkel f\'fcr den Gang\
-                const rot = `rotate($\{isRight ? 195 : 165\}deg)`;\
-                \
-                paw.className = 'cat-paw fa-solid fa-paw absolute text-orange-400 transition-all duration-700 ease-in-out text-2xl drop-shadow-md';\
-                paw.style.top = `$\{(i * 3.33)\}%`;\
-                paw.style.left = isRight ? '25px' : '0px';\
-                paw.style.opacity = '0';\
-                paw.dataset.rot = rot;\
-                paw.style.transform = rot + ' scale(0.5)';\
-                \
-                pawContainer.appendChild(paw);\
-            \}\
-        \}\
-        initPaws();\
-\
-        // Trigger initial check\
-        setTimeout(handleScroll, 200);\
-\
-        // --- 4. DYNAMIC DATA UPDATER ---\
-        function updateData() \{\
-            const names = document.getElementById('input-names').value || 'Celine & Justin';\
-            const date = document.getElementById('input-date').value || '03. September 2027';\
-            const location = document.getElementById('input-location').value || 'Q-Stall - Pulheim';\
-            const subtitle = document.getElementById('input-subtitle').value;\
-            const quote1 = document.getElementById('input-quote-1').value;\
-            const quote2 = document.getElementById('input-quote-2').value;\
-\
-            // Generate Initials (e.g. C & J)\
-            const parts = names.split('&').map(s => s.trim()[0]);\
-            const initials = (parts[0] && parts[1]) ? `$\{parts[0]\} & $\{parts[1]\}` : names;\
-\
-            // Update DOM Elements\
-            document.getElementById('nav-initials').innerText = initials;\
-            document.getElementById('header-top-left').innerText = initials;\
-            document.getElementById('header-top-right').innerText = date.toUpperCase();\
-            \
-            document.getElementById('hero-couple-names').innerText = names;\
-            document.getElementById('hero-subtitle').innerText = subtitle;\
-            \
-            document.getElementById('quote-left').innerText = quote1;\
-            document.getElementById('quote-mid').innerText = quote2;\
-\
-            document.getElementById('cta-big-date').innerText = date;\
-            document.getElementById('cta-location-info').innerText = location;\
-\
-            document.getElementById('footer-couple').innerText = `Eure $\{names\}`;\
-            document.getElementById('footer-initials-year').innerText = `$\{initials\} \'b7 2027`;\
-\
-            // Images\
-            const imgF1 = document.getElementById('input-img-f1').value;\
-            const imgF2 = document.getElementById('input-img-f2').value;\
-            const imgS1 = document.getElementById('input-img-s1').value;\
-            const imgS2 = document.getElementById('input-img-s2').value;\
-\
-            if (imgF1) document.getElementById('img-film-1').src = imgF1;\
-            if (imgF2) document.getElementById('img-film-2').src = imgF2;\
-            if (imgS1) document.getElementById('img-side-1').src = imgS1;\
-            if (imgS2) document.getElementById('img-side-2').src = imgS2;\
-        \}\
-\
-        // --- 5. PRESETS ---\
-        function loadPreset(key) \{\
-            if (key === 'celine') \{\
-                document.getElementById('input-names').value = "Celine & Justin";\
-                document.getElementById('input-date').value = "03. September 2027";\
-                document.getElementById('input-location').value = "Q-Stall - Pulheim";\
-                document.getElementById('input-subtitle').value = "Ein Sommerabend. Unsere Lieblingsmenschen. Und ein Ja f\'fcr immer.";\
-                document.getElementById('input-quote-1').value = "Das Sch\'f6nste liegt noch vor uns.";\
-                document.getElementById('input-quote-2').value = "\'84Mit dir f\'fchlt sich auch der Alltag nach Sommer an.\'93";\
-                setTheme('burgundy');\
-            \} else \{\
-                document.getElementById('input-names').value = "Lena & Jonas";\
-                document.getElementById('input-date').value = "12. Juni 2027";\
-                document.getElementById('input-location').value = "Villa Monastero - Toskana";\
-                document.getElementById('input-subtitle').value = "Sonne, Wein & Liebe in den Olivenhainen.";\
-                document.getElementById('input-quote-1').value = "Eine Geschichte, die sich entfaltet.";\
-                document.getElementById('input-quote-2').value = "\'84F\'fcr immer ist eine verdammt lange Zeit \'96 aber mit dir perfekt.\'93";\
-                setTheme('sand');\
-            \}\
-            updateData();\
-            showToast("Preset geladen!");\
-        \}\
-\
-        // --- 6. THEME SWITCHER ---\
-        function setTheme(theme) \{\
-            const liveView = document.getElementById('view-live-website');\
-            const ctaSec = document.getElementById('section-cta');\
-\
-            if (theme === 'sand') \{\
-                if (liveView) liveView.style.background = "linear-gradient(to bottom, #EFECE6 0%, #EFECE6 75vh, #FAF7F2 140vh, #FAF7F2 100%)";\
-                ctaSec.className = "text-stone-900 pt-32 pb-24 px-4 text-center relative z-30 transition-colors duration-700";\
-            \} else if (theme === 'terracotta') \{\
-                if (liveView) liveView.style.background = "linear-gradient(to bottom, #4A261D 0%, #4A261D 75vh, #FAF7F2 140vh, #FAF7F2 100%)";\
-                ctaSec.className = "text-[#4A261D] pt-32 pb-24 px-4 text-center relative z-30 transition-colors duration-700";\
-            \} else if (theme === 'sage') \{\
-                if (liveView) liveView.style.background = "linear-gradient(to bottom, #212E27 0%, #212E27 75vh, #FAF7F2 140vh, #FAF7F2 100%)";\
-                ctaSec.className = "text-[#212E27] pt-32 pb-24 px-4 text-center relative z-30 transition-colors duration-700";\
-            \} else \{\
-                // Default Burgundy\
-                if (liveView) liveView.style.background = "linear-gradient(to bottom, #521B21 0%, #521B21 75vh, #FAF7F2 140vh, #FAF7F2 100%)";\
-                ctaSec.className = "text-burgundy-900 pt-32 pb-24 px-4 text-center relative z-30 transition-colors duration-700";\
-            \}\
-        \}\
-\
-        // --- 7. DYNAMIC ICS CALENDAR FILE GENERATOR ---\
-        function downloadICS() \{\
-            const names = document.getElementById('input-names').value || 'Celine & Justin';\
-            const location = document.getElementById('input-location').value || 'Q-Stall - Pulheim';\
-\
-            const icsData = \
-`BEGIN:VCALENDAR\
-VERSION:2.0\
-PRODID:-//Hochzeits-Website Save The Date//DE\
-CALSCALE:GREGORIAN\
-BEGIN:VEVENT\
-SUMMARY:Hochzeit $\{names\} (Save the Date)\
-DESCRIPTION:Bitte haltet euch diesen Tag frei! Einladung mit genauer Uhrzeit folgt.\\\\nLocation: $\{location\}\
-LOCATION:$\{location\}\
-DTSTART;VALUE=DATE:20270903\
-DTEND;VALUE=DATE:20270904\
-STATUS:CONFIRMED\
-END:VEVENT\
-END:VCALENDAR`;\
-\
-            const blob = new Blob([icsData], \{ type: 'text/calendar;charset=utf-8;' \});\
-            const link = document.createElement('a');\
-            link.href = Window.URL.createObjectURL(blob);\
-            link.setAttribute('download', `Save_the_Date_$\{names.replace(/\\s+/g, '_')\}.ics`);\
-            document.body.appendChild(link);\
-            link.click();\
-            document.body.removeChild(link);\
-\
-            showToast("Kalendereintrag (.ics) wurde heruntergeladen!");\
-        \}\
-\
-        // --- 8. TOAST NOTIFIER ---\
-        function showToast(msg) \{\
-            const toast = document.getElementById('toast');\
-            const toastMsg = document.getElementById('toast-message');\
-            toastMsg.innerText = msg;\
-            toast.classList.remove('translate-y-20', 'opacity-0');\
-            setTimeout(() => \{\
-                toast.classList.add('translate-y-20', 'opacity-0');\
-            \}, 3500);\
-        \}\
-    </script>\
-</body>\
-</html>}
+        /* Eleganter Übergang von Burgund zu Eierschale */
+        .hero-section {
+            background: linear-gradient(to bottom, #542127 0%, #542127 80%, #FAF7F2 100%);
+            color: #FAF7F2;
+        }
+
+        /* Filmstreifen Styling */
+        .film-strip {
+            background: #111;
+            padding: 20px 10px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border-radius: 4px;
+        }
+        .film-hole {
+            width: 10px; height: 16px; background: #FAF7F2; border-radius: 2px; margin: 12px 0;
+        }
+        
+        .polaroid {
+            background: white;
+            padding: 12px 12px 35px 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-radius: 2px;
+            transform: rotate(-3deg);
+            transition: transform 0.3s ease;
+        }
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        /* Subtile, mitlaufende Katzenpfoten im rechten Bereich */
+        .paws-track {
+            position: absolute;
+            right: 5%;
+            top: 20vh;
+            bottom: 10vh;
+            width: 40px;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0.4;
+        }
+        .paw-icon {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            color: #d97706; /* Warmes Orange/Amber */
+            transform: rotate(180deg); /* Zeigt nach unten */
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <!-- Header Navigation -->
+    <header class="absolute top-0 w-full p-6 flex justify-between items-center z-50">
+        <div class="text-2xl font-semibold text-[#FAF7F2] tracking-widest">C & J</div>
+        <button onclick="alert('Hier öffnet sich der Editor für Daten & Fotos.')" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-5 py-2.5 rounded-full border border-white/20 transition text-sm flex items-center gap-2 shadow-lg">
+            <span>⚙️</span> Daten anpassen
+        </button>
+    </header>
+
+    <!-- 1. HERO SEKTION (Burgunderrot) -->
+    <section class="hero-section flex flex-col items-center pt-36 pb-32 px-4 text-center relative">
+        <h2 class="text-sm tracking-[0.3em] uppercase mb-6 opacity-80">Ein neues Kapitel. Mit euch.</h2>
+        <h1 class="text-6xl md:text-8xl font-semibold mb-6 tracking-wide">Save the Date</h1>
+        <p class="text-3xl italic mb-6">Celine & Justin</p>
+        <p class="text-lg opacity-90 max-w-md mx-auto leading-relaxed">Ein Sommerabend. Unsere Lieblingsmenschen. Und ein Ja für immer.</p>
+        <div class="mt-12 text-sm tracking-widest uppercase opacity-70 animate-bounce">↓ Rollt mit uns</div>
+    </section>
+
+    <!-- 2. HAUPTSEKTION: Filmstreifen & Story (Übergang zu Eierschalenweiß) -->
+    <section class="relative max-w-4xl mx-auto px-4 py-20">
+        
+        <!-- Mitlaufende Katzenpfoten Spur auf der rechten Seite -->
+        <div class="paws-track hidden md:block">
+            <div class="paw-icon" style="top: 5%; right: 0px;">🐾</div>
+            <div class="paw-icon" style="top: 25%; right: 25px;">🐾</div>
+            <div class="paw-icon" style="top: 45%; right: 5px;">🐾</div>
+            <div class="paw-icon" style="top: 65%; right: 30px;">🐾</div>
+            <div class="paw-icon" style="top: 85%; right: 10px;">🐾</div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center relative z-20">
+            
+            <!-- Linkes Foto / Statement -->
+            <div class="flex justify-center md:justify-end">
+                <div class="polaroid w-64">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" class="w-full h-48 object-cover" alt="Zusammen losgehen">
+                    <p class="text-xs text-center mt-3 text-gray-500 uppercase tracking-wider">01 — Zusammen losgehen</p>
+                </div>
+            </div>
+
+            <!-- Zentraler Filmstreifen -->
+            <div class="flex justify-center">
+                <div class="film-strip flex flex-row items-center w-64">
+                    <div class="flex flex-col justify-between pr-3">
+                        <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+                    </div>
+                    <div class="flex flex-col gap-3 flex-grow">
+                        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=600&q=80" alt="Moment 1" class="w-full h-40 object-cover">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Moment 2" class="w-full h-40 object-cover">
+                        <img src="https://images.unsplash.com/photo-1583939000340-6d101a88b13c?auto=format&fit=crop&w=600&q=80" alt="Moment 3" class="w-full h-40 object-cover">
+                    </div>
+                    <div class="flex flex-col justify-between pl-3">
+                        <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rechtes Foto / Statement -->
+            <div class="flex justify-center md:justify-start">
+                <div class="polaroid w-64 transform rotate-3">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80" class="w-full h-48 object-cover" alt="Das Leben leicht nehmen">
+                    <p class="text-xs text-center mt-3 text-gray-500 uppercase tracking-wider">02 — Das Leben leicht nehmen</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 3. FOOTER SEKTION (Eierschalenweiß mit dunklem Text) -->
+    <section class="text-center py-28 px-4 text-[#542127] relative z-20">
+        <h2 class="text-3xl md:text-5xl font-semibold mb-6">Haltet uns diesen Tag frei.</h2>
+        <h1 class="text-5xl md:text-8xl mb-8 font-light tracking-wide">03. September 2027</h1>
+        <div class="flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm uppercase tracking-widest mb-12 opacity-80">
+            <span>Freitag</span>
+            <span class="w-1 h-1 bg-[#542127] rounded-full"></span>
+            <span>Ein ganzer Tag für die Liebe</span>
+            <span class="w-1 h-1 bg-[#542127] rounded-full"></span>
+            <span>Q-Stall · Pulheim</span>
+        </div>
+        
+        <!-- Kalender Download Button -->
+        <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20270903T130000Z%0ADTEND:20270904T020000Z%0ASUMMARY:Hochzeit Celine %26 Justin%0ALOCATION:Q-Stall Pulheim%0AEND:VEVENT%0AEND:VCALENDAR" download="Save_the_Date_Celine_Justin.ics" class="inline-block border border-[#542127] text-[#542127] hover:bg-[#542127] hover:text-[#FAF7F2] transition px-8 py-4 uppercase tracking-widest text-sm shadow-sm rounded-sm">
+            Datum vormerken 📅
+        </a>
+    </section>
+
+</body>
+</html>
