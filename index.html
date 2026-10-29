@@ -155,7 +155,7 @@
 </head>
 <body class="landing-bg text-burgundy-900 font-sans antialiased">
 
-    <!-- HERO HEADER (Kompakte Höhe, damit das 1. Bild des Fotostreifens weit oben platziert werden kann) -->
+    <!-- HERO HEADER -->
     <header class="text-[#FAF7F2] pt-8 sm:pt-12 pb-4 px-4 text-center relative overflow-hidden">
         <div class="max-w-3xl mx-auto space-y-1 sm:space-y-2 relative z-10">
             <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.3em] text-sand-300/80 mb-1">
@@ -183,8 +183,8 @@
         </div>
     </header>
 
-    <!-- HAUPTSEKTION: DURCHGEHENDER FOTOSTREIFEN OHNE ABSTAND -->
-    <section class="relative max-w-6xl mx-auto px-4 pt-2 pb-16 min-h-[1900px] md:min-h-[2200px]" id="scroll-stage">
+    <!-- HAUPTSEKTION: DURCHGEHENDER FOTOSTREIFEN -->
+    <section class="relative max-w-6xl mx-auto px-4 pt-2 pb-4 min-h-[1750px] md:min-h-[1950px]" id="scroll-stage">
         
         <!-- KATZENPFOTEN SPUR -->
         <div class="paws-track-container" id="paws-container"></div>
@@ -205,10 +205,10 @@
             <div class="font-serif text-3xl text-burgundy-900 font-light">03 / 09 / 2027</div>
         </div>
 
-        <!-- ZENTRALER, EINZIGER 35MM FILMSTREIFEN (ALLE 4 BILDER NAHTLOS IN EINEM BEHÄLTER) -->
+        <!-- ZENTRALER, EINZIGER 35MM FILMSTREIFEN -->
         <div class="max-w-[320px] sm:max-w-[360px] mx-auto film-strip relative z-20 space-y-6">
             
-            <!-- Frame 1 (Hohe Positionierung: Sofort auf dem Startbildschirm deutlich zu sehen) -->
+            <!-- Frame 1 -->
             <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">
                 <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">
                     <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 1" class="w-full h-full object-cover">
@@ -221,7 +221,7 @@
                 <div class="absolute -right-3 top-0 bottom-0 w-2.5 film-sprocket"></div>
             </div>
 
-            <!-- Frame 2 (Direkt im selben Streifen ohne Lücke, teilweise schon beim Start sichtbar) -->
+            <!-- Frame 2 -->
             <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">
                 <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">
                     <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 2" class="w-full h-full object-cover">
@@ -265,7 +265,7 @@
 
         </div>
 
-        <!-- SLIDING SIDE PHOTOS & QUOTES (MIT WEISSEM DROPSHADOW) -->
+        <!-- SLIDING SIDE PHOTOS & QUOTES -->
         
         <!-- Side Photo 1 (Links) -->
         <div class="reveal-left absolute left-2 sm:left-6 md:left-12 lg:left-16 top-[280px] sm:top-[340px] w-44 sm:w-60 md:w-72 polaroid z-30" style="--rot: -6deg;">
@@ -316,9 +316,22 @@
     </section>
 
     <!-- CALL TO ACTION SECTION -->
-    <section class="text-burgundy-900 pt-24 pb-20 px-4 text-center relative z-30">
+    <section class="text-burgundy-900 pt-4 pb-20 px-4 text-center relative z-30">
+        
+        <!-- KATZENPFOTEN SPUR FÜR DIE LETZTE SEKTION -->
+        <div class="paws-track-container" id="paws-container-cta"></div>
+
         <div class="max-w-3xl mx-auto space-y-6">
-            <div class="text-xs font-mono uppercase tracking-[0.25em] text-burgundy-800/70">
+            
+            <!-- ICS-Button ganz oben in der letzten Section -->
+            <div>
+                <button onclick="downloadICS()" class="inline-flex items-center gap-2 bg-burgundy-900 hover:bg-burgundy-800 text-sand-100 font-medium text-xs uppercase tracking-widest px-8 py-4 rounded-full shadow-xl transition-all transform hover:-translate-y-0.5">
+                    <span>📅</span>
+                    <span>DATUM VORMERKEN (.ICS)</span>
+                </button>
+            </div>
+
+            <div class="text-xs font-mono uppercase tracking-[0.25em] text-burgundy-800/70 pt-2">
                 WIR SAGEN JA. IHR SEID DABEI.
             </div>
 
@@ -340,12 +353,6 @@
                 Wir möchten mit euch lachen, tanzen und Erinnerungen sammeln. Die Einladung mit allen Details kommt noch. Für heute: Tragt uns schon mal in euren Kalender ein.
             </p>
 
-            <div class="pt-6">
-                <button onclick="downloadICS()" class="inline-flex items-center gap-2 bg-burgundy-900 hover:bg-burgundy-800 text-sand-100 font-medium text-xs uppercase tracking-widest px-8 py-4 rounded-full shadow-xl transition-all transform hover:-translate-y-0.5">
-                    <span>📅</span>
-                    <span>DATUM VORMERKEN (.ICS)</span>
-                </button>
-            </div>
         </div>
     </section>
 
@@ -377,20 +384,25 @@
         const pawSvgContent = `<svg viewBox="0 0 512 512"><path d="M226.5 92.9c14.3 7.3 28.9 20.2 37.5 35.8 8.6 15.6 11.2 34 5.9 50-5.3 16-16.7 28.8-31 36.1-14.3 7.3-30.8 7.3-45.1 0-14.3-7.3-25.7-20.1-31-36.1-5.3-16-2.7-34.4 5.9-50 8.6-15.6 23.2-28.5 37.5-35.8 4.7-2.4 9.8-3.7 15.1-3.7s10.4 1.3 15.2 3.7zM152 232.2c16 0 31.8 7 42.4 19.3 10.6 12.3 15.5 28.7 13.5 45.4-2 16.7-10.7 32.1-23.7 42.2-13 10-30 14.1-46 11.2-16-2.9-30-12.8-38.6-27.2-8.6-14.4-11-31.9-6.4-47.5 4.6-15.6 15.7-28 30.6-33.8 5.7-2.2 11.9-3.4 18.2-3.4v-.2zM360 232.2c6.3 0 12.5 1.2 18.2 3.4 14.9 5.8 26 18.2 30.6 33.8 4.6 15.6 2.2 33.1-6.4 47.5-8.6 14.4-22.6 24.3-38.6 27.2-16 2.9-33-1.2-46-11.2-13-10-21.7-25.5-23.7-42.2-2-16.7 2.9-33.1 13.5-45.4 10.6-12.3 26.4-19.3 42.4-19.3zm-104 117.1c25.4 0 50.1 7.1 71.4 20.4 21.3 13.3 38.6 32.7 49 55.4 10.4 22.7 13 48.7 7.5 73.1-5.5 24.4-18.7 46.2-37.4 61.9-18.7 15.7-42.4 24.4-67 24.4H232.5c-24.6 0-48.3-8.7-67-24.4-18.7-15.7-31.9-37.5-37.4-61.9-5.5-24.4-2.9-50.4 7.5-73.1 10.4-22.7 27.7-42.1 49-55.4 21.3-13.3 46-20.4 71.4-20.4zM285.5 92.9c4.8-2.4 9.9-3.7 15.2-3.7s10.4 1.3 15.1 3.7c14.3 7.3 28.9 20.2 37.5 35.8 8.6 15.6 11.2 34 5.9 50-5.3 16-16.7 28.8-31 36.1-14.3 7.3-30.8 7.3-45.1 0-14.3-7.3-25.7-20.1-31-36.1-5.3-16-2.7-34.4 5.9-50 8.6-15.6 23.2-28.5 37.5-35.8z"/></svg>`;
 
         function initPaws() {
-            const container = document.getElementById('paws-container');
-            if (!container) return;
+            const containers = [
+                { el: document.getElementById('paws-container'), count: 28 },
+                { el: document.getElementById('paws-container-cta'), count: 8 }
+            ];
 
-            for(let i = 0; i < 28; i++) {
-                const paw = document.createElement('div');
-                paw.className = 'paw-svg';
-                paw.innerHTML = pawSvgContent;
-                
-                const isRight = i % 2 === 0;
-                paw.style.top = `${(i * 3.5)}%`;
-                paw.style.left = isRight ? '12px' : '0px';
-                
-                container.appendChild(paw);
-            }
+            containers.forEach(item => {
+                if (!item.el) return;
+                for(let i = 0; i < item.count; i++) {
+                    const paw = document.createElement('div');
+                    paw.className = 'paw-svg';
+                    paw.innerHTML = pawSvgContent;
+                    
+                    const isRight = i % 2 === 0;
+                    paw.style.top = `${(i * (100 / item.count))}%`;
+                    paw.style.left = isRight ? '12px' : '0px';
+                    
+                    item.el.appendChild(paw);
+                }
+            });
         }
         initPaws();
 
@@ -437,7 +449,7 @@ PRODID:-//Hochzeits-Website Save The Date//DE
 CALSCALE:GREGORIAN
 BEGIN:VEVENT
 SUMMARY:Hochzeit Celine & Justin (Save the Date)
-DESCRIPTION:Bitte haltet euch diesen Tag frei! Einladung mit genauer Uhrzeit folgt.\nLocation: Q-Stall - Pulheim
+DESCRIPTION:Bitte haltet euch diesen Tag frei! Einladung mit genauer Uhrzeit folgt.\\nLocation: Q-Stall - Pulheim
 LOCATION:Q-Stall - Pulheim
 DTSTART;VALUE=DATE:20270903
 DTEND;VALUE=DATE:20270904
@@ -471,4 +483,3 @@ END:VCALENDAR`;
     </script>
 </body>
 </html>
-
