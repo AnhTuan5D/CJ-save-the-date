@@ -14,184 +14,387 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Google Fonts: Cormorant Garamond & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        burgundy: {
+                            900: '#3D1318',
+                            800: '#521B21',
+                            700: '#68252C',
+                            600: '#83323B',
+                        },
+                        sand: {
+                            50: '#FAF7F2',
+                            100: '#F4EFE6',
+                            200: '#EAE3D9',
+                            300: '#D9CEBF',
+                            400: '#C2B29F',
+                        },
+                        gold: '#C5A059'
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        body {
-            font-family: 'Cormorant Garamond', serif;
-            background-color: #FAF7F2; /* Eierschalenweiß als Basis */
-            color: #333;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
+        /* CSS 35mm Filmstrip Perforations */
+        .film-sprocket {
+            background-image: repeating-linear-gradient(
+                to bottom,
+                transparent 0px,
+                transparent 7px,
+                #ffffff 7px,
+                #ffffff 18px,
+                transparent 18px,
+                transparent 25px
+            );
         }
 
-        /* Eleganter echter CSS-Verlauf von Burgund zu Eierschale */
-        .hero-section {
-            background: linear-gradient(to bottom, #542127 0%, #542127 80%, #FAF7F2 100%);
-            color: #FAF7F2;
+        /* Glassmorphism overlays */
+        .glass-dark {
+            background: rgba(20, 10, 12, 0.65);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
         }
 
-        /* Filmstreifen Styling */
-        .film-strip {
-            background: #111;
-            padding: 20px 10px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        /* Smooth slide-in transitions for side photos */
+        .side-photo-left {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+            will-change: transform, opacity;
+        }
+
+        .side-photo-right {
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+            will-change: transform, opacity;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #3D1318;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #83323B;
             border-radius: 4px;
-        }
-        .film-hole {
-            width: 10px; height: 16px; background: #FAF7F2; border-radius: 2px; margin: 12px 0;
-        }
-        
-        .polaroid {
-            background: white;
-            padding: 12px 12px 35px 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border-radius: 2px;
-            transform: rotate(-3deg);
-            transition: transform 0.3s ease;
-        }
-        .polaroid.right-rotate {
-            transform: rotate(3deg);
-        }
-
-        /* Katzenpfoten Spur im Hintergrund (z-index 5: hinter Fotos, über Background) */
-        .paws-track {
-            position: absolute;
-            right: 8%;
-            top: 100px;
-            bottom: 50px;
-            width: 30px;
-            pointer-events: none;
-            z-index: 5;
-        }
-        .paw-icon {
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            color: #d97706; /* Warmes Orange */
-            opacity: 0.65;
-            transform: rotate(180deg); /* Zeigt nach unten in Scrollrichtung */
-        }
-
-        /* Sanftes Hereingleiten der Side-Fotos */
-        .slide-left {
-            opacity: 0;
-            transform: translateX(-60px) rotate(-6deg);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .slide-right {
-            opacity: 0;
-            transform: translateX(60px) rotate(6deg);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .slide-left.active, .slide-right.active {
-            opacity: 1;
-            transform: translateX(0) rotate(var(--rot, 0deg));
         }
     </style>
 </head>
-<body class="relative">
+<body class="text-burgundy-900 font-sans antialiased bg-[#FAF7F2]" style="background: linear-gradient(to bottom, #521B21 0%, #521B21 75vh, #FAF7F2 140vh, #FAF7F2 100%);">
 
-    <!-- Header Navigation -->
-    <header class="fixed top-0 w-full p-6 flex justify-between items-center z-50">
-        <div class="text-2xl font-semibold text-[#FAF7F2] mix-blend-difference tracking-widest">C & J</div>
-        <button onclick="alert('Hier öffnet sich der Editor für Daten & Fotos.')" class="bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-5 py-2.5 rounded-full border border-white/20 transition text-sm flex items-center gap-2 shadow-lg">
-            <span>⚙️</span> Daten anpassen
-        </button>
+    <!-- FLOATING TOP NAVIGATION -->
+    <header class="fixed top-4 inset-x-0 z-50 max-w-5xl mx-auto px-4">
+        <nav class="glass-dark rounded-full px-5 py-2.5 flex items-center justify-between shadow-2xl">
+            <!-- Initials Monogram -->
+            <div class="flex items-center gap-3">
+                <span class="font-serif italic text-2xl font-semibold tracking-wider text-sand-100">L & J</span>
+            </div>
+
+            <!-- Calendar CTA -->
+            <div>
+                <button onclick="downloadICS()" class="bg-sand-100 hover:bg-white text-burgundy-900 text-xs font-semibold px-4 py-2 rounded-full shadow-lg transition-all flex items-center gap-1.5">
+                    <i class="fa-regular fa-calendar-check text-burgundy-800"></i>
+                    <span class="hidden sm:inline">Datum vormerken</span>
+                </button>
+            </div>
+        </nav>
     </header>
 
-    <!-- 1. HERO SEKTION (Burgunderrot) -->
-    <section class="hero-section flex flex-col items-center pt-36 pb-32 px-4 text-center relative z-10">
-        <h2 class="text-sm tracking-[0.3em] uppercase mb-6 opacity-80">Ein neues Kapitel. Mit euch.</h2>
-        <h1 class="text-6xl md:text-8xl font-semibold mb-6 tracking-wide">Save the Date</h1>
-        <p class="text-3xl italic mb-6">Celine & Justin</p>
-        <p class="text-lg opacity-90 max-w-md mx-auto leading-relaxed">Ein Sommerabend. Unsere Lieblingsmenschen. Und ein Ja für immer.</p>
-        <div class="mt-12 text-sm tracking-widest uppercase opacity-70 animate-bounce">↓ Rollt mit uns</div>
-    </section>
-
-    <!-- 2. HAUPTSEKTION: Filmstreifen & Story (Übergang zu Eierschalenweiß) -->
-    <section class="relative max-w-5xl mx-auto px-4 py-24 z-20">
-        
-        <!-- Mitlaufende Katzenpfoten Spur auf der rechten Seite -->
-        <div class="paws-track hidden md:block">
-            <div class="paw-icon" style="top: 5%; right: 0px;">🐾</div>
-            <div class="paw-icon" style="top: 20%; right: 20px;">🐾</div>
-            <div class="paw-icon" style="top: 35%; right: 5px;">🐾</div>
-            <div class="paw-icon" style="top: 50%; right: 25px;">🐾</div>
-            <div class="paw-icon" style="top: 65%; right: 10px;">🐾</div>
-            <div class="paw-icon" style="top: 80%; right: 20px;">🐾</div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center relative">
+    <!-- HERO SECTION -->
+    <section class="pt-32 pb-16 px-4 text-center min-h-[60vh] flex flex-col justify-center items-center relative overflow-hidden">
+        <div class="max-w-3xl mx-auto space-y-4 relative z-10">
+            <div class="text-[11px] font-mono uppercase tracking-[0.3em] text-sand-300/80 mb-2">
+                EIN NEUES KAPITEL. MIT EUCH.
+            </div>
             
-            <!-- Linkes Foto (Gleitet ein) -->
-            <div class="flex justify-center md:justify-end z-30">
-                <div class="polaroid w-64 slide-left" style="--rot: -3deg;">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" class="w-full h-48 object-cover" alt="Zusammen losgehen">
-                    <p class="text-xs text-center mt-3 text-gray-500 uppercase tracking-wider">01 — Zusammen losgehen</p>
-                </div>
-            </div>
+            <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-normal tracking-tight text-sand-50 leading-none">
+                Save the Date
+            </h1>
+            
+            <p class="font-serif italic text-2xl sm:text-3xl text-sand-200 tracking-wide pt-2">
+                Celine & Justin
+            </p>
 
-            <!-- Zentraler Filmstreifen -->
-            <div class="flex justify-center z-20">
-                <div class="film-strip flex flex-row items-center w-64">
-                    <div class="flex flex-col justify-between pr-3">
-                        <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
-                    </div>
-                    <div class="flex flex-col gap-3 flex-grow">
-                        <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=600&q=80" alt="Moment 1" class="w-full h-40 object-cover">
-                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Moment 2" class="w-full h-40 object-cover">
-                        <img src="https://images.unsplash.com/photo-1583939000340-6d101a88b13c?auto=format&fit=crop&w=600&q=80" alt="Moment 3" class="w-full h-40 object-cover">
-                    </div>
-                    <div class="flex flex-col justify-between pl-3">
-                        <div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div><div class="film-hole"></div>
-                    </div>
-                </div>
-            </div>
+            <p class="text-xs sm:text-sm text-sand-300/90 font-light max-w-md mx-auto pt-2 leading-relaxed">
+                Ein Sommerabend. Unsere Lieblingsmenschen. Und ein Ja für immer.
+            </p>
+        </div>
 
-            <!-- Rechtes Foto (Gleitet ein) -->
-            <div class="flex justify-center md:justify-start z-30">
-                <div class="polaroid right-rotate w-64 slide-right" style="--rot: 3deg;">
-                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=600&q=80" class="w-full h-48 object-cover" alt="Das Leben leicht nehmen">
-                    <p class="text-xs text-center mt-3 text-gray-500 uppercase tracking-wider">02 — Das Leben leicht nehmen</p>
-                </div>
-            </div>
-
+        <!-- Header info bars -->
+        <div class="w-full max-w-5xl px-6 flex justify-between items-center text-[11px] font-mono text-sand-300/60 uppercase tracking-widest pt-12">
+            <span>C & J</span>
+            <span>WIR HEIRATEN</span>
+            <span>03. SEPTEMBER 2027</span>
         </div>
     </section>
 
-    <!-- 3. FOOTER SEKTION (Eierschalenweiß mit dunklem Text) -->
-    <section class="text-center py-28 px-4 text-[#542127] relative z-20">
-        <h2 class="text-3xl md:text-5xl font-semibold mb-6">Haltet uns diesen Tag frei.</h2>
-        <h1 class="text-5xl md:text-8xl mb-8 font-light tracking-wide">03. September 2027</h1>
-        <div class="flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm uppercase tracking-widest mb-12 opacity-80">
-            <span>Freitag</span>
-            <span class="w-1 h-1 bg-[#542127] rounded-full"></span>
-            <span>Ein ganzer Tag für die Liebe</span>
-            <span class="w-1 h-1 bg-[#542127] rounded-full"></span>
-            <span>Q-Stall · Pulheim</span>
-        </div>
+    <!-- MAIN SCROLLING FILMSTRIP & SLIDING PHOTOS SECTION -->
+    <section class="relative max-w-6xl mx-auto px-4 py-12 min-h-[2200px]" id="scroll-stage">
         
-        <!-- Kalender Download Button -->
-        <a href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ADTSTART:20270903T130000Z%0ADTEND:20270904T020000Z%0ASUMMARY:Hochzeit Celine %26 Justin%0ALOCATION:Q-Stall Pulheim%0AEND:VEVENT%0AEND:VCALENDAR" download="Save_the_Date_Celine_Justin.ics" class="inline-block border border-[#542127] text-[#542127] hover:bg-[#542127] hover:text-[#FAF7F2] transition px-8 py-4 uppercase tracking-widest text-sm shadow-sm rounded-sm">
-            Datum vormerken 📅
-        </a>
+        <!-- FLOATING QUOTE LEFT -->
+        <div class="hidden lg:block absolute left-8 top-12 w-60 space-y-2 text-left">
+            <p class="font-serif italic text-xl text-burgundy-900 leading-snug">
+                Das Schönste liegt noch vor uns.
+            </p>
+            <div class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/60 flex items-center gap-2">
+                <i class="fa-solid fa-arrow-down text-amber-500 animate-bounce"></i>
+                <span>SCROLLT MIT UNS</span>
+            </div>
+        </div>
+
+        <!-- FLOATING DATE RIGHT -->
+        <div class="hidden lg:block absolute right-8 top-32 w-56 text-right">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/60 block mb-1">FREIHALTEN & VORFREUEN</span>
+            <div class="font-serif text-3xl text-burgundy-900 font-light">03 / 09 / 2027</div>
+        </div>
+
+        <!-- CENTER 35MM FILMSTRIP CONTAINER -->
+        <div class="max-w-[340px] sm:max-w-[380px] mx-auto bg-[#181616] rounded-md p-3 sm:p-4 shadow-2xl border border-stone-800 relative z-20 space-y-6">
+            
+            <!-- Film Frame 1 -->
+            <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">
+                <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 1" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">
+                    <span>UNSER SOMMER - 35 MM</span>
+                    <span>01 ▷</span>
+                </div>
+                <!-- Left & Right Sprocket holes simulation -->
+                <div class="absolute -left-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>
+                <div class="absolute -right-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>
+            </div>
+
+            <!-- Film Frame 2 -->
+            <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">
+                <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">
+                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 2" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">
+                    <span>UNSER SOMMER - 35 MM</span>
+                    <span>02 ▷</span>
+                </div>
+                <div class="absolute -left-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>
+                <div class="absolute -right-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>
+            </div>
+
+            <!-- Film Frame 3 -->
+            <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">
+                <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 3" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">
+                    <span>UNSER SOMMER - 35 MM</span>
+                    <span>03 ▷</span>
+                </div>
+                <div class="absolute -left-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>
+                <div class="absolute -right-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>
+            </div>
+
+            <!-- Film Frame 4 -->
+            <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">
+                <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">
+                    <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 4" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                </div>
+                <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">
+                    <span>UNSER SOMMER - 35 MM</span>
+                    <span>04 ▷</span>
+                </div>
+                <div class="text-center text-[8px] font-mono text-stone-400 uppercase tracking-widest pt-2 border-t border-stone-200 mt-2">
+                    TO BE CONTINUED
+                </div>
+                <div class="absolute -left-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>
+                <div class="absolute -right-3.5 top-0 bottom-0 w-2.5 film-sprocket"></div>
+            </div>
+
+        </div>
+
+        <!-- DYNAMICALLY SLIDING SIDE PHOTOS -->
+        
+        <!-- Side Photo 1 (GLIDES FROM LEFT) -->
+        <div id="side-photo-1" class="side-photo-left absolute left-4 sm:left-8 md:left-12 lg:left-16 top-[320px] w-52 sm:w-64 md:w-72 bg-white p-3 rounded shadow-2xl z-30 transform -rotate-6 opacity-0">
+            <div class="aspect-[4/3] overflow-hidden bg-stone-100 mb-2">
+                <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80" alt="Side 1" class="w-full h-full object-cover">
+            </div>
+            <div class="text-[10px] font-mono text-stone-600 tracking-wider uppercase flex items-center justify-between">
+                <span>01 — ZUSAMMEN LOSGEHEN</span>
+            </div>
+        </div>
+
+        <!-- Side Text Quote Middle -->
+        <div id="side-text-mid" class="side-photo-left absolute left-4 sm:left-12 lg:left-20 top-[900px] max-w-xs space-y-2 z-40 opacity-0">
+            <p class="font-serif italic text-2xl sm:text-3xl text-burgundy-900 leading-snug">
+                „Mit dir fühlt sich auch der Alltag nach Sommer an.“
+            </p>
+            <div class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/60">UND DAS DARF SO BLEIBEN.</div>
+        </div>
+
+        <!-- Side Photo 2 (GLIDES FROM RIGHT) -->
+        <div id="side-photo-2" class="side-photo-right absolute right-4 sm:right-8 md:right-12 lg:right-16 top-[720px] w-56 sm:w-64 md:w-72 bg-white p-3 rounded shadow-2xl z-30 transform rotate-6 opacity-0">
+            <div class="aspect-[4/3] overflow-hidden bg-stone-100 mb-2">
+                <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80" alt="Side 2" class="w-full h-full object-cover grayscale">
+            </div>
+            <div class="text-[10px] font-mono text-stone-600 tracking-wider uppercase">
+                <span>02 — DAS LEBEN LEICHT NEHMEN</span>
+            </div>
+        </div>
+
+        <!-- Side Photo 3 (GLIDES FROM LEFT BOTTOM) -->
+        <div id="side-photo-3" class="side-photo-left absolute left-4 sm:left-8 md:left-16 top-[1380px] w-56 sm:w-64 md:w-72 bg-white p-3 rounded shadow-2xl z-30 transform -rotate-3 opacity-0">
+            <div class="aspect-[4/3] overflow-hidden bg-stone-100 mb-2">
+                <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80" alt="Side 3" class="w-full h-full object-cover">
+            </div>
+            <div class="text-[10px] font-mono text-stone-600 tracking-wider uppercase">
+                <span>03 — NOCH SO VIEL VOR UNS</span>
+            </div>
+        </div>
+
+        <!-- Side Text Right Bottom -->
+        <div id="side-text-bottom" class="side-photo-right absolute right-4 sm:right-12 lg:right-20 top-[1480px] max-w-xs text-right space-y-2 z-40 opacity-0">
+            <p class="font-serif text-3xl sm:text-4xl text-burgundy-900 leading-tight">
+                Und jetzt: ein Tag, der für immer bleibt.
+            </p>
+            <div class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/60">MIT EUCH AN UNSERER SEITE.</div>
+        </div>
+
     </section>
 
-    <!-- Scroll-Animation Script -->
+    <!-- BOTTOM CALL TO ACTION SECTION -->
+    <section class="text-burgundy-900 pt-32 pb-24 px-4 text-center relative z-30">
+        <div class="max-w-3xl mx-auto space-y-6">
+            
+            <div class="text-xs font-mono uppercase tracking-[0.25em] text-burgundy-800/70">
+                WIR SAGEN JA. IHR SEID DABEI.
+            </div>
+
+            <h2 class="font-serif text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-burgundy-900">
+                Haltet uns diesen Tag frei.
+            </h2>
+
+            <div class="font-serif text-5xl sm:text-7xl md:text-8xl text-burgundy-800 font-light py-2">
+                03. September 2027
+            </div>
+
+            <div class="flex flex-wrap justify-center items-center gap-4 text-xs font-mono uppercase tracking-widest text-burgundy-800/80 pt-2 border-t border-burgundy-900/10 max-w-xl mx-auto">
+                <span>FREITAG • EIN GANZER TAG FÜR DIE LIEBE</span>
+                <span>|</span>
+                <span>Q-Stall - Pulheim</span>
+            </div>
+
+            <p class="text-xs sm:text-sm text-stone-700 max-w-md mx-auto leading-relaxed pt-2">
+                Wir möchten mit euch lachen, tanzen und Erinnerungen sammeln. Die Einladung mit allen Details kommt noch. Für heute: Tragt uns schon mal in euren Kalender ein.
+            </p>
+
+            <div class="pt-6">
+                <button onclick="downloadICS()" class="inline-flex items-center gap-2 bg-burgundy-900 hover:bg-burgundy-800 text-sand-100 font-medium text-xs uppercase tracking-widest px-8 py-4 rounded-full shadow-xl transition-all transform hover:-translate-y-0.5">
+                    <i class="fa-regular fa-calendar-plus text-amber-400"></i>
+                    <span>DATUM VORMERKEN (.ICS)</span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-burgundy-900 text-sand-300 py-12 px-4 text-center border-t border-white/10 text-xs font-light">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 font-mono">
+            <div class="text-left">
+                <span class="block text-[10px] uppercase text-sand-400">WIR FREUEN UNS AUF EUCH.</span>
+                <span class="font-serif italic text-lg text-sand-100 font-sans">Eure Celine & Justin</span>
+            </div>
+            <div class="text-xs italic font-serif text-sand-200">
+                Das wird unser Sommer.
+            </div>
+            <div class="text-stone-400 text-[10px]">
+                C & J · 2027
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-stone-900 text-stone-100 border border-amber-500/50 px-5 py-3 rounded-xl shadow-2xl transform translate-y-20 opacity-0 transition-all duration-300 flex items-center gap-3 text-xs pointer-events-none">
+        <i class="fa-solid fa-circle-check text-amber-400 text-base"></i>
+        <span id="toast-message">Kalendereintrag (.ics) wurde heruntergeladen!</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
     <script>
-        window.addEventListener('scroll', () => {
-            const scrollPos = window.innerHeight * 0.85;
-            document.querySelectorAll('.slide-left, .slide-right').forEach(el => {
-                if (el.getBoundingClientRect().top < scrollPos) {
-                    el.classList.add('active');
-                }
-            });
-        });
-        // Initialer Trigger
-        setTimeout(() => window.dispatchEvent(new Event('scroll')), 100);
-    </script>
-</body>
-</html>
+        // --- 1. LIVE SCROLL ANIMATION FOR SIDE PHOTOS ---
+        function handleScroll() {
+            const scrollY = window.scrollY;
+
+            const side1 = document.getElementById('side-photo-1');
+            const side2 = document.getElementById('side-photo-2');
+            const side3 = document.getElementById('side-photo-3');
+            const textMid = document.getElementById('side-text-mid');
+            const textBottom = document.getElementById('side-text-bottom');
+
+            if (!side1) return;
+
+            // Side Photo 1
+            if (scrollY > 150) {
+                side1.style.opacity = '1';
+                side1.style.transform = 'translateX(0) rotate(-6deg)';
+            } else {
+                side1.style.opacity = '0';
+                side1.style.transform = 'translateX(-80px) rotate(-12deg)';
+            }
+
+            // Side Photo 2
+            if (scrollY > 450) {
+                side2.style.opacity = '1';
+                side2.style.transform = 'translateX(0) rotate(6deg)';
+            } else {
+                side2.style.opacity = '0';
+                side2.style.transform = 'translateX(80px) rotate(12deg)';
+            }
+
+            // Text Mid
+            if (scrollY > 700) {
+                textMid.style.opacity = '1';
+                textMid.style.transform = 'translateX(0)';
+            } else {
+                textMid.style.opacity = '0';
+                textMid.style.transform = 'translateX(-50px)';
+            }
+
+            // Side Photo 3 & Text Bottom
+            if (scrollY > 1100) {
+                side3.style.opacity = '1';
+                side3.style.transform = 'translateX(0) rotate(-3deg)';
+                textBottom.style.opacity = '1';
+                textBottom.style.transform = 'translateX(0)';
+            } else {
+                side3.style.opacity = '0';
+                side3.style.transform = 'translateX(-60px) rotate(-8deg)';
+                textBottom.style.opacity = '0';
+                textBottom.style.transform = 'translateX(60px)';
+            }
+
+            // --- EASTER EGG: Katzenpfoten-Animation ---
+            const paws = document.querySelectorAll('.cat-paw');
+            const vh = window.innerHeight;
+            paws.forEach((paw) => {
+                const rect = paw.getBoundingClientRect();
+                if (rect.top > vh * 0.05 && rect.top < vh * 0.95) {
+                    paw.style.opacity = '0.65';
+                    paw.style.transform = paw.dataset.rot + ' scale(1)';
+                } else {
+                    paw.style.opacity = '0';
+                  
