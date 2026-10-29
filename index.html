@@ -57,10 +57,9 @@
             padding: 0;
         }
 
-        /* Echter CSS-Verlauf von Burgund zu Eierschalenweiß */
-        .hero-section {
-            background: linear-gradient(to bottom, #521B21 0%, #521B21 70%, #FAF7F2 100%);
-            color: #FAF7F2;
+        /* Hintergrund: Solid Rot (#521B21) bedeckt 100% des ersten Bildschirms (Landing Page), danach sanfter Farbverlauf in Eierschalenweiß */
+        .landing-bg {
+            background: linear-gradient(to bottom, #521B21 0%, #521B21 100vh, #FAF7F2 170vh, #FAF7F2 100%);
         }
 
         /* 35mm Perforations */
@@ -79,7 +78,7 @@
         .film-strip {
             background: #181616;
             padding: 16px 12px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.45);
             border-radius: 4px;
         }
 
@@ -88,6 +87,12 @@
             padding: 12px 12px 32px 12px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.12);
             border-radius: 2px;
+        }
+
+        /* Weißer Dropshadow für einfliegende Schriften für maximale Lesbarkeit */
+        .white-dropshadow, .reveal-left p, .reveal-right p {
+            text-shadow: 0 0 12px rgba(255, 255, 255, 0.95), 0 2px 6px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.8);
+            filter: drop-shadow(0px 2px 8px rgba(255, 255, 255, 0.9));
         }
 
         /* Inline Katzenpfoten Track */
@@ -147,27 +152,14 @@
         }
     </style>
 </head>
-<body class="text-burgundy-900 font-sans antialiased bg-[#FAF7F2]">
+<body class="landing-bg text-burgundy-900 font-sans antialiased">
 
-    <!-- FLOATING TOP NAVIGATION -->
-    <header class="fixed top-4 inset-x-0 z-50 max-w-5xl mx-auto px-4">
-        <nav class="bg-[#140a0c]/80 backdrop-blur-md rounded-full px-5 py-2.5 flex items-center justify-between shadow-2xl border border-white/10">
-            <div class="flex items-center gap-3">
-                <span class="font-serif italic text-2xl font-semibold tracking-wider text-sand-100">C & J</span>
-            </div>
-            <div>
-                <button onclick="downloadICS()" class="bg-sand-100 hover:bg-white text-burgundy-900 text-xs font-semibold px-4 py-2 rounded-full shadow-lg transition-all flex items-center gap-1.5">
-                    <span>📅</span>
-                    <span>Datum vormerken</span>
-                </button>
-            </div>
-        </nav>
-    </header>
-
-    <!-- HERO SECTION -->
-    <section class="hero-section pt-32 pb-20 px-4 text-center min-h-[65vh] flex flex-col justify-center items-center relative overflow-hidden">
-        <div class="max-w-3xl mx-auto space-y-4 relative z-10">
-            <div class="text-[11px] font-mono uppercase tracking-[0.3em] text-sand-300/80 mb-2">
+    <!-- 1. HERO SEKTION (Solid Rot bedeckt den gesamten ersten Bildschirm) -->
+    <section class="min-h-screen text-[#FAF7F2] flex flex-col justify-between items-center pt-10 sm:pt-14 pb-4 px-4 text-center relative overflow-hidden">
+        
+        <!-- Header Text Content -->
+        <div class="max-w-3xl mx-auto space-y-2 sm:space-y-3 relative z-10">
+            <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.3em] text-sand-300/80 mb-1">
                 EIN NEUES KAPITEL. MIT EUCH.
             </div>
             
@@ -175,60 +167,66 @@
                 Save the Date
             </h1>
             
-            <p class="font-serif italic text-2xl sm:text-3xl text-sand-200 tracking-wide pt-2">
+            <p class="font-serif italic text-2xl sm:text-3xl text-sand-200 tracking-wide">
                 Celine & Justin
             </p>
 
-            <p class="text-xs sm:text-sm text-sand-300/90 font-light max-w-md mx-auto pt-2 leading-relaxed">
+            <p class="text-xs sm:text-sm text-sand-300/90 font-light max-w-md mx-auto leading-relaxed">
                 Ein Sommerabend. Unsere Lieblingsmenschen. Und ein Ja für immer.
             </p>
         </div>
 
-        <div class="w-full max-w-5xl px-6 flex justify-between items-center text-[10px] sm:text-[11px] font-mono text-sand-300/60 uppercase tracking-widest pt-12">
+        <!-- Header Info Bar -->
+        <div class="w-full max-w-5xl px-6 flex justify-between items-center text-[10px] sm:text-[11px] font-mono text-sand-300/70 uppercase tracking-widest my-4">
             <span>C & J</span>
             <span>WIR HEIRATEN</span>
             <span>03. SEPTEMBER 2027</span>
         </div>
+
+        <!-- FOTO-STRIPE VORSCHAU: Das 1. Bild lugt schon vor dem Scrollen im Start-Screen hervor! -->
+        <div class="w-full max-w-[320px] sm:max-w-[360px] mx-auto z-20 -mb-28 sm:-mb-32">
+            <div class="film-strip">
+                <div class="relative bg-white p-2.5 rounded-sm shadow-inner">
+                    <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">
+                        <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 1" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">
+                        <span>UNSER SOMMER - 35 MM</span>
+                        <span>01 ▷</span>
+                    </div>
+                    <div class="absolute -left-3 top-0 bottom-0 w-2.5 film-sprocket"></div>
+                    <div class="absolute -right-3 top-0 bottom-0 w-2.5 film-sprocket"></div>
+                </div>
+            </div>
+        </div>
+
     </section>
 
-    <!-- MAIN SCROLLING FILMSTRIP & SLIDING PHOTOS SECTION -->
-    <section class="relative max-w-6xl mx-auto px-4 py-12 min-h-[1800px] md:min-h-[2100px]" id="scroll-stage">
+    <!-- 2. HAUPTSEKTION: Filmstreifen Fortsetzung & Story (Farbverlauf zu Eierschalenweiß) -->
+    <section class="relative max-w-6xl mx-auto px-4 pt-32 sm:pt-40 pb-12 min-h-[1600px] md:min-h-[1900px]" id="scroll-stage">
         
         <!-- KATZENPFOTEN SPUR -->
         <div class="paws-track-container" id="paws-container"></div>
 
         <!-- FLOATING QUOTE LEFT (DESKTOP) -->
-        <div class="hidden lg:block absolute left-8 top-12 w-60 space-y-2 text-left z-20">
+        <div class="hidden lg:block absolute left-8 top-28 w-60 space-y-2 text-left z-20 white-dropshadow">
             <p class="font-serif italic text-xl text-burgundy-900 leading-snug">
                 Das Schönste liegt noch vor uns.
             </p>
-            <div class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/60 flex items-center gap-2">
+            <div class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/80 flex items-center gap-2">
                 <span>↓ SCROLLT MIT UNS</span>
             </div>
         </div>
 
         <!-- FLOATING DATE RIGHT (DESKTOP) -->
-        <div class="hidden lg:block absolute right-12 top-28 w-56 text-right z-20">
-            <span class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/60 block mb-1">FREIHALTEN & VORFREUEN</span>
+        <div class="hidden lg:block absolute right-12 top-40 w-56 text-right z-20 white-dropshadow">
+            <span class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/80 block mb-1">FREIHALTEN & VORFREUEN</span>
             <div class="font-serif text-3xl text-burgundy-900 font-light">03 / 09 / 2027</div>
         </div>
 
-        <!-- CENTER 35MM FILMSTRIP CONTAINER -->
-        <div class="max-w-[320px] sm:max-w-[370px] mx-auto film-strip relative z-20 space-y-6">
+        <!-- CENTER 35MM FILMSTRIP RESTLICHE FRAMES -->
+        <div class="max-w-[320px] sm:max-w-[360px] mx-auto film-strip relative z-20 space-y-6 pt-6">
             
-            <!-- Frame 1 -->
-            <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">
-                <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">
-                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 1" class="w-full h-full object-cover">
-                </div>
-                <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">
-                    <span>UNSER SOMMER - 35 MM</span>
-                    <span>01 ▷</span>
-                </div>
-                <div class="absolute -left-3 top-0 bottom-0 w-2.5 film-sprocket"></div>
-                <div class="absolute -right-3 top-0 bottom-0 w-2.5 film-sprocket"></div>
-            </div>
-
             <!-- Frame 2 -->
             <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">
                 <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">
@@ -273,10 +271,10 @@
 
         </div>
 
-        <!-- SLIDING SIDE PHOTOS & QUOTES -->
+        <!-- SLIDING SIDE PHOTOS & QUOTES (MIT WEISSEM DROPSHADOW) -->
         
         <!-- Side Photo 1 (Links) -->
-        <div class="reveal-left absolute left-2 sm:left-6 md:left-12 lg:left-16 top-[280px] sm:top-[320px] w-44 sm:w-60 md:w-72 polaroid z-30" style="--rot: -6deg;">
+        <div class="reveal-left absolute left-2 sm:left-6 md:left-12 lg:left-16 top-[220px] sm:top-[260px] w-44 sm:w-60 md:w-72 polaroid z-30" style="--rot: -6deg;">
             <div class="aspect-[4/3] overflow-hidden bg-stone-100 mb-2">
                 <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=800&q=80" alt="Side 1" class="w-full h-full object-cover">
             </div>
@@ -286,15 +284,15 @@
         </div>
 
         <!-- Side Text Quote Mitte -->
-        <div class="reveal-left absolute left-4 sm:left-12 lg:left-20 top-[800px] sm:top-[900px] max-w-[220px] sm:max-w-xs space-y-2 z-40">
+        <div class="reveal-left absolute left-4 sm:left-12 lg:left-20 top-[720px] sm:top-[820px] max-w-[220px] sm:max-w-xs space-y-2 z-40 white-dropshadow">
             <p class="font-serif italic text-xl sm:text-3xl text-burgundy-900 leading-snug">
                 „Mit dir fühlt sich auch der Alltag nach Sommer an.“
             </p>
-            <div class="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-burgundy-800/60">UND DAS DARF SO BLEIBEN.</div>
+            <div class="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-burgundy-800/80">UND DAS DARF SO BLEIBEN.</div>
         </div>
 
         <!-- Side Photo 2 (Rechts) -->
-        <div class="reveal-right absolute right-2 sm:right-6 md:right-12 lg:right-16 top-[620px] sm:top-[720px] w-48 sm:w-60 md:w-72 polaroid z-30" style="--rot: 6deg;">
+        <div class="reveal-right absolute right-2 sm:right-6 md:right-12 lg:right-16 top-[540px] sm:top-[640px] w-48 sm:w-60 md:w-72 polaroid z-30" style="--rot: 6deg;">
             <div class="aspect-[4/3] overflow-hidden bg-stone-100 mb-2">
                 <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=800&q=80" alt="Side 2" class="w-full h-full object-cover grayscale">
             </div>
@@ -304,7 +302,7 @@
         </div>
 
         <!-- Side Photo 3 (Links Unten) -->
-        <div class="reveal-left absolute left-2 sm:left-6 md:left-16 top-[1250px] sm:top-[1380px] w-48 sm:w-60 md:w-72 polaroid z-30" style="--rot: -3deg;">
+        <div class="reveal-left absolute left-2 sm:left-6 md:left-16 top-[1150px] sm:top-[1280px] w-48 sm:w-60 md:w-72 polaroid z-30" style="--rot: -3deg;">
             <div class="aspect-[4/3] overflow-hidden bg-stone-100 mb-2">
                 <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80" alt="Side 3" class="w-full h-full object-cover">
             </div>
@@ -314,11 +312,11 @@
         </div>
 
         <!-- Side Text Rechts Unten -->
-        <div class="reveal-right absolute right-4 sm:right-12 lg:right-20 top-[1380px] sm:top-[1480px] max-w-[200px] sm:max-w-xs text-right space-y-2 z-40">
+        <div class="reveal-right absolute right-4 sm:right-12 lg:right-20 top-[1280px] sm:top-[1380px] max-w-[200px] sm:max-w-xs text-right space-y-2 z-40 white-dropshadow">
             <p class="font-serif text-2xl sm:text-4xl text-burgundy-900 leading-tight">
                 Und jetzt: ein Tag, der für immer bleibt.
             </p>
-            <div class="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-burgundy-800/60">MIT EUCH AN UNSERER SEITE.</div>
+            <div class="text-[9px] sm:text-[10px] font-mono uppercase tracking-widest text-burgundy-800/80">MIT EUCH AN UNSERER SEITE.</div>
         </div>
 
     </section>
