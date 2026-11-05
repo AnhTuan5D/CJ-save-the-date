@@ -59,7 +59,7 @@
 
         /* Hintergrund: Solid Rot (#521B21) bedeckt den ersten Bildschirm komplett, geht danach sanft in Eierschalenweiß über */
         .landing-bg {
-            background: linear-gradient(to bottom, #5E5C2D 0%, #5E5C2D 750px, #FAF7F2 1500px, #FAF7F2 100%);
+            background: linear-gradient(to bottom, #5E5C2D 0%, #5E5C2D 750px, #fff7d6 1500px, #fff7d6 100%);
         }
 
         /* 35mm Perforations */
@@ -68,8 +68,8 @@
                 to bottom,
                 transparent 0px,
                 transparent 7px,
-                #FAF7F2 7px,
-                #FAF7F2 18px,
+                #fff7d6 7px,
+                #fff7d6 18px,
                 transparent 18px,
                 transparent 25px
             );
@@ -84,17 +84,13 @@
         }
 
         .polaroid {
-            background: #ffffff;
+            background: #fff7d6;
             padding: 12px 12px 32px 12px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.12);
             border-radius: 2px;
         }
 
-        /* Weißer Dropshadow für einfliegende Schriften für maximale Lesbarkeit */
-        .white-dropshadow, .reveal-left p, .reveal-right p {
-            text-shadow: 0 0 12px rgba(255, 255, 255, 0.95), 0 2px 6px rgba(255, 255, 255, 0.9), 0 0 20px rgba(255, 255, 255, 0.8);
-            filter: drop-shadow(0px 2px 8px rgba(255, 255, 255, 0.9));
-        }
+       
 
         /* Inline Katzenpfoten Track */
         .paws-track-container {
@@ -111,7 +107,7 @@
             position: absolute;
             width: 22px;
             height: 22px;
-            fill: #fb923c; /* Orange */
+            fill: #fc8a2d; /* Orange */
             opacity: 0;
             transform: rotate(180deg) scale(0.6);
             transition: opacity 1.8s ease, transform 1.8s ease;
@@ -145,41 +141,39 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #3D1318;
+            background: #fff7d6;
         }
         ::-webkit-scrollbar-thumb {
-            background: #83323B;
+            background: #fc8a2d;
             border-radius: 4px;
         }
     </style>
 </head>
-<body class="landing-bg text-burgundy-900 font-sans antialiased">
+<body class="landing-bg #fc8a2d font-sans antialiased">
 
     <!-- HERO HEADER -->
     <header class="text-[#FAF7F2] pt-8 sm:pt-12 pb-4 px-4 text-center relative overflow-hidden">
         <div class="max-w-3xl mx-auto space-y-1 sm:space-y-2 relative z-10">
             <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.3em] text-sand-300/80 mb-1">
-                EIN NEUES KAPITEL. MIT EUCH.
+                UNSER NEUES KAPITEL. MIT EUCH.
             </div>
             
             <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-normal tracking-tight text-sand-50 leading-none">
                 Save the Date
             </h1>
             
-            <p class="font-serif italic text-2xl sm:text-3xl text-sand-200 tracking-wide">
+            <p class="font-serif italic text-2xl sm:text-3xl fff7d6 tracking-wide">
                 Celine & Justin
             </p>
 
-            <p class="text-xs sm:text-sm text-sand-300/90 font-light max-w-md mx-auto leading-relaxed pt-1">
-                Ein Sommerabend. Unsere Lieblingsmenschen. Und ein Ja für immer.
-            </p>
+            
         </div>
 
         <!-- Header Info Bar -->
         <div class="w-full max-w-5xl px-6 flex justify-between items-center text-[10px] sm:text-[11px] font-mono text-sand-300/70 uppercase tracking-widest mt-6 mb-2">
-            <span>C & J</span>
-            <span>WIR HEIRATEN</span>
-            <span>03. SEPTEMBER 2027</span>
+            <span>Erst verliebt</span>
+            <span>Jetzt verlobt</span>
+            <span>Bald wird gefeiert</span>
         </div>
     </header>
 
@@ -190,8 +184,8 @@
         <div class="paws-track-container" id="paws-container"></div>
 
         <!-- FLOATING QUOTE LEFT (DESKTOP) -->
-        <div class="hidden lg:block absolute left-8 top-16 w-60 space-y-2 text-left z-20 white-dropshadow">
-            <p class="font-serif italic text-xl text-burgundy-900 leading-snug">
+        <div class="hidden lg:block absolute left-8 top-16 w-60 space-y-2 text-left z-20 ">
+            <p class="font-serif italic text-xl #fc8a2d leading-snug">
                 Das Schönste liegt noch vor uns.
             </p>
             <div class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/80 flex items-center gap-2">
@@ -200,9 +194,9 @@
         </div>
 
         <!-- FLOATING DATE RIGHT (DESKTOP) -->
-        <div class="hidden lg:block absolute right-12 top-28 w-56 text-right z-20 white-dropshadow">
+        <div class="hidden lg:block absolute right-12 top-28 w-56 text-right z-20 ">
             <span class="text-[10px] font-mono uppercase tracking-widest text-burgundy-800/80 block mb-1">FREIHALTEN & VORFREUEN</span>
-            <div class="font-serif text-3xl text-burgundy-900 font-light">03 / 09 / 2027</div>
+            <div class="font-serif text-3xl #fc8a2d font-light">03 / 09 / 2027</div>
         </div>
 
         <!-- ZENTRALER, EINZIGER 35MM FILMSTREIFEN -->
@@ -266,7 +260,7 @@
         </div>
 
     <!-- CALL TO ACTION SECTION -->
-    <section class="text-burgundy-900 pt-4 pb-20 px-4 text-center relative z-30">
+    <section class="#fc8a2d pt-4 pb-20 px-4 text-center relative z-30">
         
         <!-- KATZENPFOTEN SPUR FÜR DIE LETZTE SEKTION -->
         <div class="paws-track-container" id="paws-container-cta"></div>
@@ -285,7 +279,7 @@
                 WIR SAGEN JA. IHR SEID DABEI.
             </div>
 
-            <h2 class="font-serif text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-burgundy-900">
+            <h2 class="font-serif text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight #fc8a2d">
                 Haltet uns diesen Tag frei.
             </h2>
 
@@ -313,7 +307,7 @@
                 <span class="block text-[10px] uppercase text-sand-400">WIR FREUEN UNS AUF EUCH.</span>
                 <span class="font-serif italic text-lg text-sand-100 font-sans">Eure Celine & Justin</span>
             </div>
-            <div class="text-xs italic font-serif text-sand-200">
+            <div class="text-xs italic font-serif fff7d6">
                 Das wird unser Sommer.
             </div>
             <div class="text-stone-400 text-[10px]">
