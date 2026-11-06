@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Save the Date | Celine & Justin</title>
-    
+
     <!-- Open Graph Tags für WhatsApp & Messenger -->
     <meta property="og:title" content="Save the Date! 🥂 - Celine & Justin" />
     <meta property="og:description" content="Wir heiraten am 03. September 2027 im Q-Stall Pulheim. Klicke hier für alle Infos." />
     <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80" />
     <meta property="og:url" content="https://anhtuan5d.github.io/CJ-save-the-date/" />
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -90,7 +90,7 @@
             border-radius: 2px;
         }
 
-       
+
 
         /* Inline Katzenpfoten Track */
         .paws-track-container {
@@ -98,15 +98,15 @@
             right: 3%;
             top: 2vh;
             bottom: 2vh;
-            width: 28px;
+            width: calc(100vw / 12 * 1.3);
             pointer-events: none;
             z-index: 5;
         }
 
         .paw-svg {
             position: absolute;
-            width: 22px;
-            height: 22px;
+            width: calc(100vw / 12);
+            height: calc(100vw / 12);
             fill: #fc8a2d; /* Orange */
             opacity: 0;
             transform: rotate(180deg) scale(0.6);
@@ -114,7 +114,7 @@
         }
 
         .paw-svg.visible {
-            opacity: 0.65;
+            opacity: 1;
             transform: rotate(180deg) scale(1);
         }
 
@@ -136,6 +136,73 @@
             transform: translateX(0) translateY(0) rotate(var(--rot, 0deg)) !important;
         }
 
+        /* Skizzenbuch: lose Blätter mit Tintenrahmen und Washi-Tape */
+        .sketch-card {
+            position: relative;
+            margin: 0;
+            /* Papierfarbe der jeweiligen Skizze, pro Karte per style gesetzt */
+            background: #f5eedd;
+            padding: 10px 10px 12px 10px;
+            box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+            border-radius: 2px;
+        }
+
+        .ink-frame {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+            pointer-events: none;
+        }
+
+        .ink-frame path {
+            fill: none;
+            stroke: #2a3f9e;
+            stroke-width: 1.3;
+            stroke-linecap: round;
+            stroke-dasharray: 1;
+            stroke-dashoffset: 1;
+            transition: stroke-dashoffset 2.4s ease 0.3s;
+        }
+
+        .ink-frame path + path {
+            stroke-width: 0.8;
+            opacity: 0.7;
+            transition-delay: 0.9s;
+        }
+
+        .reveal-active .ink-frame path {
+            stroke-dashoffset: 0;
+        }
+
+        .washi {
+            position: absolute;
+            top: -12px;
+            width: 84px;
+            height: 26px;
+            z-index: 2;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+            clip-path: polygon(3% 0, 97% 8%, 100% 92%, 0 100%);
+        }
+
+        .washi-left {
+            left: -20px;
+            transform: rotate(-35deg);
+            background: #faaf6b;
+        }
+
+        .washi-right {
+            right: -20px;
+            transform: rotate(35deg);
+            background: #5E5C2D;
+        }
+
+        /* Rand für das grüne Tape auf grünem Hintergrund */
+        .washi-outline {
+            border: 1.5px solid #f8f1d0;
+        }
+
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
@@ -149,28 +216,28 @@
         }
     </style>
 </head>
-<body class="landing-bg #fc8a2d font-sans antialiased">
+<body class="landing-bg text-[#fc8a2d] font-sans antialiased">
 
     <!-- HERO HEADER -->
     <header class="text-[#FAF7F2] pt-8 sm:pt-12 pb-4 px-4 text-center relative overflow-hidden">
         <div class="max-w-3xl mx-auto space-y-1 sm:space-y-2 relative z-10">
-            <div class="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.3em] f8f1d0/80 mb-1">
+            <div class="text-xs sm:text-sm font-mono uppercase tracking-[0.3em] text-[#f8f1d0]/80 mb-1">
                 UNSER NEUES KAPITEL. MIT EUCH.
             </div>
-            
-            <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-normal tracking-tight f8f1d0 leading-none">
+
+            <h1 class="font-serif text-5xl sm:text-7xl md:text-8xl font-normal tracking-tight text-[#f8f1d0] leading-none">
                 Save the Date
             </h1>
-            
-            <p class="font-serif italic text-2xl sm:text-3xl fff7d6 tracking-wide">
+
+            <p class="font-serif italic text-2xl sm:text-3xl text-[#fff7d6] tracking-wide">
                 Celine & Justin
             </p>
 
-            
+
         </div>
 
         <!-- Header Info Bar -->
-        <div class="w-full max-w-5xl px-6 flex justify-between items-center text-[10px] sm:text-[11px] font-mono f8f1d0/70 uppercase tracking-widest mt-6 mb-2">
+        <div class="w-full max-w-5xl mx-auto px-6 flex justify-between items-center text-xs sm:text-sm font-mono text-[#f8f1d0]/70 uppercase tracking-widest mt-6 mb-2">
             <span>Erst verliebt</span>
             <span>Jetzt verlobt</span>
             <span>Bald wird gefeiert</span>
@@ -179,101 +246,114 @@
 
     <!-- HAUPTSEKTION: DURCHGEHENDER FOTOSTREIFEN -->
     <section class="relative max-w-6xl mx-auto px-4 pt-2 pb-4 min-h-[1750px] md:min-h-[1950px]" id="scroll-stage">
-        
+
         <!-- KATZENPFOTEN SPUR -->
         <div class="paws-track-container" id="paws-container"></div>
 
 
 
-        <!-- ZENTRALER, EINZIGER 35MM FILMSTREIFEN -->
-        <div class="max-w-[320px] sm:max-w-[360px] mx-auto film-strip relative z-20 space-y-6">
-            
-            <!-- Frame 1 -->
-            <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">
-                <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">
-                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 1" class="w-full h-full object-cover">
-                </div>
-                <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">
-                    <span>UNSER SOMMER - 35 MM</span>
-                    <span>01 ▷</span>
-                </div>
-                <div class="absolute -left-3 top-0 bottom-0 w-2.5 film-sprocket"></div>
-                <div class="absolute -right-3 top-0 bottom-0 w-2.5 film-sprocket"></div>
-            </div>
+        <!-- SKIZZENBUCH: LOSE BLÄTTER MIT TINTENRAHMEN -->
+        <div class="max-w-[320px] sm:max-w-[360px] mx-auto relative z-20 space-y-16 pt-6">
 
-            <!-- Frame 2 -->
-            <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">
-                <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 2" class="w-full h-full object-cover">
+            <!-- Skizze 1 -->
+            <figure class="sketch-card reveal-left" style="--rot: -2.5deg; background: #f5eedd;">
+                <div class="washi washi-left"></div>
+                <div class="washi washi-right washi-outline"></div>
+                <div class="relative p-3">
+                    <img src="skizzen/1.jpg" alt="Skizze: Celine und Justin mit Partyhüten und Katze" class="w-full h-auto block">
+                    <svg class="ink-frame" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true">
+                        <path pathLength="1" d="M6,8 C80,4 200,10 294,6 C297,120 291,280 295,394 C200,398 90,392 5,396 C2,280 8,130 6,8 Z"/>
+                        <path pathLength="1" d="M10,4 C110,9 210,2 297,11 C292,140 298,260 292,397 C190,393 100,399 9,392 C7,260 3,120 10,4"/>
+                    </svg>
                 </div>
-                <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">
-                    <span>UNSER SOMMER - 35 MM</span>
-                    <span>02 ▷</span>
-                </div>
-                <div class="absolute -left-3 top-0 bottom-0 w-2.5 film-sprocket"></div>
-                <div class="absolute -right-3 top-0 bottom-0 w-2.5 film-sprocket"></div>
-            </div>
+                <figcaption class="flex justify-between items-baseline px-2 pt-1">
+                    <span class="font-serif italic text-lg text-[#2a3f9e]">Unsere kleine Familie</span>
+                    <span class="text-[10px] font-mono tracking-widest text-[#2a3f9e]/70">01</span>
+                </figcaption>
+            </figure>
 
-            <!-- Frame 3 -->
-            <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">
-                <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 3" class="w-full h-full object-cover">
+            <!-- Skizze 2 -->
+            <figure class="sketch-card reveal-right" style="--rot: 2deg; background: #f5eede;">
+                <div class="washi washi-left"></div>
+                <div class="washi washi-right washi-outline"></div>
+                <div class="relative p-3">
+                    <img src="skizzen/2.jpg" alt="Skizze: Celine und Justin vor Sacré-Cœur in Paris" class="w-full h-auto block">
+                    <svg class="ink-frame" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true">
+                        <path pathLength="1" d="M5,6 C90,10 190,3 295,8 C291,130 297,270 293,395 C210,391 80,398 7,393 C3,270 9,140 5,6 Z"/>
+                        <path pathLength="1" d="M9,10 C100,3 200,9 291,4 C298,150 290,250 296,391 C180,397 110,390 4,397 C8,250 2,150 9,10"/>
+                    </svg>
                 </div>
-                <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">
-                    <span>UNSER SOMMER - 35 MM</span>
-                    <span>03 ▷</span>
-                </div>
-                <div class="absolute -left-3 top-0 bottom-0 w-2.5 film-sprocket"></div>
-                <div class="absolute -right-3 top-0 bottom-0 w-2.5 film-sprocket"></div>
-            </div>
+                <figcaption class="flex justify-between items-baseline px-2 pt-1">
+                    <span class="font-serif italic text-lg text-[#2a3f9e]">Paris, Sacré-Cœur</span>
+                    <span class="text-[10px] font-mono tracking-widest text-[#2a3f9e]/70">02</span>
+                </figcaption>
+            </figure>
 
-            <!-- Frame 4 -->
-            <div class="relative bg-white p-2.5 rounded-sm shadow-inner group">
-                <div class="aspect-[4/5] overflow-hidden bg-stone-200 relative">
-                    <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=800&q=80" alt="Filmstrip 4" class="w-full h-full object-cover">
+            <!-- Skizze 3 -->
+            <figure class="sketch-card reveal-left" style="--rot: -1.5deg; background: #f5f1e2;">
+                <div class="washi washi-left"></div>
+                <div class="washi washi-right"></div>
+                <div class="relative p-3">
+                    <img src="skizzen/3.jpg" alt="Skizze: Hand mit Verlobungsring vor Sacré-Cœur" class="w-full h-auto block">
+                    <svg class="ink-frame" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true">
+                        <path pathLength="1" d="M6,8 C80,4 200,10 294,6 C297,120 291,280 295,394 C200,398 90,392 5,396 C2,280 8,130 6,8 Z"/>
+                        <path pathLength="1" d="M10,4 C110,9 210,2 297,11 C292,140 298,260 292,397 C190,393 100,399 9,392 C7,260 3,120 10,4"/>
+                    </svg>
                 </div>
-                <div class="flex justify-between items-center text-[9px] font-mono text-stone-600 tracking-wider pt-2 px-1">
-                    <span>UNSER SOMMER - 35 MM</span>
-                    <span>04 ▷</span>
+                <figcaption class="flex justify-between items-baseline px-2 pt-1">
+                    <span class="font-serif italic text-lg text-[#2a3f9e]">Sie hat Ja gesagt</span>
+                    <span class="text-[10px] font-mono tracking-widest text-[#2a3f9e]/70">03</span>
+                </figcaption>
+            </figure>
+
+            <!-- Skizze 4 -->
+            <figure class="sketch-card reveal-right" style="--rot: 2.5deg; background: #f5f1e5;">
+                <div class="washi washi-left"></div>
+                <div class="washi washi-right"></div>
+                <div class="relative p-3">
+                    <img src="skizzen/4.jpg" alt="Skizze: Celine und Justin spazieren vor dem Eiffelturm" class="w-full h-auto block">
+                    <svg class="ink-frame" viewBox="0 0 300 400" preserveAspectRatio="none" aria-hidden="true">
+                        <path pathLength="1" d="M5,6 C90,10 190,3 295,8 C291,130 297,270 293,395 C210,391 80,398 7,393 C3,270 9,140 5,6 Z"/>
+                        <path pathLength="1" d="M9,10 C100,3 200,9 291,4 C298,150 290,250 296,391 C180,397 110,390 4,397 C8,250 2,150 9,10"/>
+                    </svg>
                 </div>
-                <div class="text-center text-[8px] font-mono text-stone-400 uppercase tracking-widest pt-2 border-t border-stone-200 mt-2">
+                <figcaption class="flex justify-between items-baseline px-2 pt-1">
+                    <span class="font-serif italic text-lg text-[#2a3f9e]">Paris, Hand in Hand</span>
+                    <span class="text-[10px] font-mono tracking-widest text-[#2a3f9e]/70">04</span>
+                </figcaption>
+                <div class="text-center text-[8px] font-mono text-[#2a3f9e]/50 uppercase tracking-widest pt-2 mt-1">
                     TO BE CONTINUED
                 </div>
-                <div class="absolute -left-3 top-0 bottom-0 w-2.5 film-sprocket"></div>
-                <div class="absolute -right-3 top-0 bottom-0 w-2.5 film-sprocket"></div>
-            </div>
+            </figure>
 
         </div>
 
     <!-- CALL TO ACTION SECTION -->
-    <section class="#fc8a2d pt-4 pb-20 px-4 text-center relative z-30">
-        
-        <!-- KATZENPFOTEN SPUR FÜR DIE LETZTE SEKTION -->
-        <div class="paws-track-container" id="paws-container-cta"></div>
+    <section class="text-[#fc8a2d] pt-4 pb-20 px-4 text-center relative z-30">
 
         <div class="max-w-3xl mx-auto space-y-6">
-            
+
             <!-- ICS-Button ganz oben in der letzten Section -->
             <div>
-                <button onclick="downloadICS()" class="inline-flex items-center gap-2 5d5b2c hover:5d5b2c f8f1d0 font-medium text-xs uppercase tracking-widest px-8 py-4 rounded-full shadow-xl transition-all transform hover:-translate-y-0.5">
+                <button onclick="downloadICS()" class="inline-flex items-center gap-2 bg-[#5d5b2c] hover:bg-[#5d5b2c] text-[#f8f1d0] font-medium text-xs uppercase tracking-widest px-8 py-4 rounded-full shadow-xl transition-all transform hover:-translate-y-0.5">
                     <span>📅</span>
                     <span>DATUM VORMERKEN (.ICS)</span>
                 </button>
             </div>
 
-            <div class="text-xs font-mono uppercase tracking-[0.25em] 5E5C2D/70 pt-2">
+            <div class="text-xs font-mono uppercase tracking-[0.25em] text-[#5E5C2D]/70 pt-2">
                 WIR SAGEN JA. IHR SEID DABEI.
             </div>
 
-            <h2 class="font-serif text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight #fc8a2d">
+            <h2 class="font-serif text-4xl sm:text-6xl md:text-7xl font-normal tracking-tight text-[#5E5C2D]">
                 Haltet uns diesen Tag frei.
             </h2>
 
-            <div class="font-serif text-5xl sm:text-7xl md:text-8xl 5E5C2D font-light py-2">
+            <div class="font-serif text-5xl sm:text-7xl md:text-8xl text-[#ba5d3a] font-light py-2">
                 03. September 2027
             </div>
 
-            <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-4 text-[10px] sm:text-xs font-mono uppercase tracking-widest 5E5C2D/80 pt-2 border-t border-burgundy-900/10 max-w-xl mx-auto">
+            <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-4 text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#5E5C2D]/80 pt-2 border-t border-burgundy-900/10 max-w-xl mx-auto">
                 <span>FREITAG • EIN GANZER TAG FÜR DIE LIEBE</span>
                 <span>|</span>
                 <span>Q-Stall - Pulheim</span>
@@ -287,13 +367,13 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="5d5b2c f8f1d0 py-12 px-4 text-center border-t border-white/10 text-xs font-light">
+    <footer class="bg-[#5d5b2c] text-[#f8f1d0] py-12 px-4 text-center border-t border-white/10 text-xs font-light">
         <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 font-mono">
             <div class="text-left">
-                <span class="block text-[10px] uppercase f8f1d0">WIR FREUEN UNS AUF EUCH.</span>
-                <span class="font-serif italic text-lg f8f1d0 font-sans">Eure Celine & Justin</span>
+                <span class="block text-[10px] uppercase text-[#f8f1d0]">WIR FREUEN UNS AUF EUCH.</span>
+                <span class="font-serif italic text-lg text-[#f8f1d0] font-sans">Eure Celine & Justin</span>
             </div>
-            <div class="text-xs italic font-serif fff7d6">
+            <div class="text-xs italic font-serif text-[#fff7d6]">
                 Das wird unser Sommer.
             </div>
             <div class="text-stone-400 text-[10px]">
@@ -313,28 +393,49 @@
         // 1. INLINE SVG KATZENPFOTEN ERZEUGEN
         const pawSvgContent = `<svg viewBox="0 0 512 512"><path d="M226.5 92.9c14.3 7.3 28.9 20.2 37.5 35.8 8.6 15.6 11.2 34 5.9 50-5.3 16-16.7 28.8-31 36.1-14.3 7.3-30.8 7.3-45.1 0-14.3-7.3-25.7-20.1-31-36.1-5.3-16-2.7-34.4 5.9-50 8.6-15.6 23.2-28.5 37.5-35.8 4.7-2.4 9.8-3.7 15.1-3.7s10.4 1.3 15.2 3.7zM152 232.2c16 0 31.8 7 42.4 19.3 10.6 12.3 15.5 28.7 13.5 45.4-2 16.7-10.7 32.1-23.7 42.2-13 10-30 14.1-46 11.2-16-2.9-30-12.8-38.6-27.2-8.6-14.4-11-31.9-6.4-47.5 4.6-15.6 15.7-28 30.6-33.8 5.7-2.2 11.9-3.4 18.2-3.4v-.2zM360 232.2c6.3 0 12.5 1.2 18.2 3.4 14.9 5.8 26 18.2 30.6 33.8 4.6 15.6 2.2 33.1-6.4 47.5-8.6 14.4-22.6 24.3-38.6 27.2-16 2.9-33-1.2-46-11.2-13-10-21.7-25.5-23.7-42.2-2-16.7 2.9-33.1 13.5-45.4 10.6-12.3 26.4-19.3 42.4-19.3zm-104 117.1c25.4 0 50.1 7.1 71.4 20.4 21.3 13.3 38.6 32.7 49 55.4 10.4 22.7 13 48.7 7.5 73.1-5.5 24.4-18.7 46.2-37.4 61.9-18.7 15.7-42.4 24.4-67 24.4H232.5c-24.6 0-48.3-8.7-67-24.4-18.7-15.7-31.9-37.5-37.4-61.9-5.5-24.4-2.9-50.4 7.5-73.1 10.4-22.7 27.7-42.1 49-55.4 21.3-13.3 46-20.4 71.4-20.4zM285.5 92.9c4.8-2.4 9.9-3.7 15.2-3.7s10.4 1.3 15.1 3.7c14.3 7.3 28.9 20.2 37.5 35.8 8.6 15.6 11.2 34 5.9 50-5.3 16-16.7 28.8-31 36.1-14.3 7.3-30.8 7.3-45.1 0-14.3-7.3-25.7-20.1-31-36.1-5.3-16-2.7-34.4 5.9-50 8.6-15.6 23.2-28.5 37.5-35.8z"/></svg>`;
 
-        function initPaws() {
-            const containers = [
-                { el: document.getElementById('paws-container'), count: 28 },
-                { el: document.getElementById('paws-container-cta'), count: 8 }
-            ];
-
-            containers.forEach(item => {
-                if (!item.el) return;
-                for(let i = 0; i < item.count; i++) {
-                    const paw = document.createElement('div');
-                    paw.className = 'paw-svg';
-                    paw.innerHTML = pawSvgContent;
-                    
-                    const isRight = i % 2 === 0;
-                    paw.style.top = `${(i * (100 / item.count))}%`;
-                    paw.style.left = isRight ? '12px' : '0px';
-                    
-                    item.el.appendChild(paw);
-                }
-            });
+        // Pfoten-Farbe folgt dem Hintergrundverlauf (.landing-bg: 750px → 1500px)
+        const pawFrom = [0xfa, 0xaf, 0x6b];
+        const pawTo = [0xba, 0x5d, 0x3a];
+        function pawColorAt(y) {
+            const t = Math.min(Math.max((y - 750) / 750, 0), 1);
+            return `rgb(${pawFrom.map((c, k) => Math.round(c + (pawTo[k] - c) * t)).join(',')})`;
         }
-        initPaws();
+
+        let pawsWidth = 0;
+        function initPaws() {
+            const el = document.getElementById('paws-container');
+            if (!el) return;
+            pawsWidth = window.innerWidth;
+            el.querySelectorAll('.paw-svg').forEach(p => { pawObserver.unobserve(p); p.remove(); });
+
+            // Pfote = 1/12 der Fensterbreite, Anzahl so, dass sie sich nicht überlappen
+            const pawSize = window.innerWidth / 12;
+            const height = el.clientHeight;
+            if (pawSize <= 0 || height <= 0) return;
+            const count = Math.max(1, Math.floor(height / (pawSize * 1.2)));
+            const containerTop = el.getBoundingClientRect().top + window.scrollY;
+
+            for(let i = 0; i < count; i++) {
+                const paw = document.createElement('div');
+                paw.className = 'paw-svg';
+
+                const y = containerTop + height * i / count;
+                const id = `paw-grad-${i}`;
+                // Pfote ist um 180° gedreht: offset 0 liegt optisch unten
+                paw.innerHTML = pawSvgContent.replace('<path ',
+                    `<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1">` +
+                    `<stop offset="0" stop-color="${pawColorAt(y + pawSize)}"/>` +
+                    `<stop offset="1" stop-color="${pawColorAt(y)}"/>` +
+                    `</linearGradient></defs><path fill="url(#${id})" `);
+
+                const isRight = i % 2 === 0;
+                paw.style.top = `${(i * (100 / count))}%`;
+                paw.style.left = isRight ? '23%' : '0px';
+
+                el.appendChild(paw);
+                pawObserver.observe(paw);
+            }
+        }
 
         // 2. INTERSECTION OBSERVER FÜR ANIMATIONEN
         const observerOptions = {
@@ -366,13 +467,19 @@
             });
         }, { rootMargin: '-5% 0px -5% 0px', threshold: 0.1 });
 
-        document.querySelectorAll('.paw-svg').forEach(paw => {
-            pawObserver.observe(paw);
+        initPaws();
+        window.addEventListener('load', initPaws);
+        let pawResizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(pawResizeTimer);
+            pawResizeTimer = setTimeout(() => {
+                if (window.innerWidth !== pawsWidth) initPaws();
+            }, 200);
         });
 
         // 3. KORREKTER ICS DATES-DOWNLOAD
         function downloadICS() {
-            const icsData = 
+            const icsData =
 `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Hochzeits-Website Save The Date//DE
