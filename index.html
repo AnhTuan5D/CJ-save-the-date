@@ -340,7 +340,7 @@
 
             <!-- ICS-Button ganz oben in der letzten Section -->
             <div>
-                <button onclick="downloadICS()" class="font-serif inline-flex items-center gap-2 bg-[#cf5527] hover:bg-[#cf5527] text-[#f8f1d0] font-medium text-xs uppercase tracking-widest px-8 py-4 rounded-full shadow-xl transition-all transform hover:-translate-y-0.5">
+                <button onclick="downloadICS()" class="font-serif inline-flex items-center gap-2 bg-[#cf5527] hover:bg-[#cf5527] text-[#f8f1d0] font-bold text-xs uppercase tracking-widest px-8 py-4 rounded-full shadow-xl transition-all transform hover:-translate-y-0.5">
                     <span>📅</span>
                     <span>DATUM VORMERKEN (.ICS)</span>
                 </button>
@@ -420,7 +420,7 @@
             const pawSize = window.innerWidth / 12;
             const height = el.clientHeight;
             if (pawSize <= 0 || height <= 0) return;
-            const count = Math.max(1, Math.floor(height / (pawSize * 1.2)));
+            const count = Math.max(1, Math.floor(height / (pawSize * 1.6)));
             const containerTop = el.getBoundingClientRect().top + window.scrollY;
 
             for(let i = 0; i < count; i++) {
@@ -467,6 +467,13 @@
         // Observer für Katzenpfoten: sichtbare Pfoten erscheinen nacheinander, von oben nach unten
         let pawQueue = [];
         let pawTimer = null;
+        // Scrollrichtung merken: nach unten → Pfoten von oben nach unten, nach oben → von unten nach oben
+        let lastScrollY = window.scrollY;
+        let scrollingUp = false;
+        window.addEventListener('scroll', () => {
+            scrollingUp = window.scrollY < lastScrollY;
+            lastScrollY = window.scrollY;
+        }, { passive: true });
         function pawStep() {
             const next = pawQueue.shift();
             if (!next) { pawTimer = null; return; }
@@ -484,7 +491,7 @@
                     entry.target.classList.remove('visible');
                 }
             });
-            pawQueue.sort((a, b) => a.offsetTop - b.offsetTop);
+            pawQueue.sort((a, b) => scrollingUp ? b.offsetTop - a.offsetTop : a.offsetTop - b.offsetTop);
             if (!pawTimer) pawStep();
         }, { rootMargin: '0px 0px -5% 0px', threshold: 0.1 });
 
