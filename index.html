@@ -14,10 +14,12 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Google Fonts: Cormorant Garamond & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Schriften lokal im Repo: Cormorant Garamond, Inter, Geist Mono -->
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <link rel="preload" href="fonts/cormorant-garamond-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/cormorant-garamond-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/geist-mono-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
 
     <script>
         tailwind.config = {
@@ -41,6 +43,7 @@
                     fontFamily: {
                         serif: ['"Cormorant Garamond"', 'serif'],
                         sans: ['Inter', 'sans-serif'],
+                        mono: ['"Geist Mono"', 'monospace'],
                     }
                 }
             }
@@ -110,7 +113,7 @@
             fill: #cf5527; /* Orange */
             opacity: 0;
             transform: rotate(180deg) scale(0.6);
-            transition: opacity 1.8s ease, transform 1.8s ease;
+            transition: opacity 2.6s ease, transform 2.6s ease;
         }
 
         .paw-svg.visible {
@@ -337,7 +340,7 @@
 
             <!-- ICS-Button ganz oben in der letzten Section -->
             <div>
-                <button onclick="downloadICS()" class="inline-flex items-center gap-2 bg-[#cf5527] hover:bg-[#cf5527] text-[#f8f1d0] font-medium text-xs uppercase tracking-widest px-8 py-4 rounded-full shadow-xl transition-all transform hover:-translate-y-0.5">
+                <button onclick="downloadICS()" class="font-serif inline-flex items-center gap-2 bg-[#cf5527] hover:bg-[#cf5527] text-[#f8f1d0] font-medium text-xs uppercase tracking-widest px-8 py-4 rounded-full shadow-xl transition-all transform hover:-translate-y-0.5">
                     <span>📅</span>
                     <span>DATUM VORMERKEN (.ICS)</span>
                 </button>
@@ -361,7 +364,7 @@
                 <span>Q-Stall - Pulheim</span>
             </div>
 
-            <p class="font-serif text-xs sm:text-sm text-[#5E5C2D] max-w-md mx-auto leading-relaxed pt-2">
+            <p class="font-mono text-xs sm:text-sm text-[#5E5C2D] max-w-md mx-auto leading-relaxed pt-2">
                 Wir möchten mit euch lachen, tanzen und Erinnerungen sammeln. Die Einladung mit allen Details kommt noch. Für heute: Tragt uns schon mal in euren Kalender ein.
             </p>
 
@@ -369,11 +372,11 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-[#5d5b2c] text-[#f8f1d0] py-12 px-4 text-center border-t border-white/10 text-xs font-light">
-        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 font-mono">
+    <footer class="font-serif bg-[#5d5b2c] text-[#f8f1d0] py-12 px-4 text-center border-t border-white/10 text-xs font-light">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 font-serif">
             <div class="text-left">
                 <span class="block text-[10px] uppercase text-[#f8f1d0]">WIR FREUEN UNS AUF EUCH.</span>
-                <span class="font-serif italic text-lg text-[#f8f1d0] font-sans">Eure Céline & Justin</span>
+                <span class="font-serif italic text-lg text-[#f8f1d0]">Eure Céline & Justin</span>
             </div>
             <div class="text-xs italic font-serif text-[#fff7d6]">
                 Das wird unser Sommer.
@@ -409,6 +412,9 @@
             if (!el) return;
             pawsWidth = window.innerWidth;
             el.querySelectorAll('.paw-svg').forEach(p => { pawObserver.unobserve(p); p.remove(); });
+            pawQueue = [];
+            // Spur beginnt ganz oben auf der Seite (über dem Header)
+            el.style.top = `${-el.parentElement.offsetTop}px`;
 
             // Pfote = 1/12 der Fensterbreite, Anzahl so, dass sie sich nicht überlappen
             const pawSize = window.innerWidth / 12;
@@ -458,16 +464,29 @@
             revealObserver.observe(el);
         });
 
-        // Observer für Katzenpfoten
+        // Observer für Katzenpfoten: sichtbare Pfoten erscheinen nacheinander, von oben nach unten
+        let pawQueue = [];
+        let pawTimer = null;
+        function pawStep() {
+            const next = pawQueue.shift();
+            if (!next) { pawTimer = null; return; }
+            next.classList.add('visible');
+            pawTimer = setTimeout(pawStep, 700);
+        }
         const pawObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    if (!entry.target.classList.contains('visible') && !pawQueue.includes(entry.target)) {
+                        pawQueue.push(entry.target);
+                    }
                 } else {
+                    pawQueue = pawQueue.filter(p => p !== entry.target);
                     entry.target.classList.remove('visible');
                 }
             });
-        }, { rootMargin: '-5% 0px -5% 0px', threshold: 0.1 });
+            pawQueue.sort((a, b) => a.offsetTop - b.offsetTop);
+            if (!pawTimer) pawStep();
+        }, { rootMargin: '0px 0px -5% 0px', threshold: 0.1 });
 
         initPaws();
         window.addEventListener('load', initPaws);
